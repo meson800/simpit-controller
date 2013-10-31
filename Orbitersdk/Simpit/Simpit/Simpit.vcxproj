@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3407978B-F90D-44EA-9FE9-F2275CB5A815}</ProjectGuid>
+    <RootNamespace>Simpit</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\resources\Orbiter debug.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\Utils\boost\include;$(SDKDir)\Simpit\HelperDLL</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;C:\Utils\boost\lib;$(SDKLibDir)</LibraryPath>
+    <OutDir>$(OrbiterDir)\Modules\Plugin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <ShowIncludes>false</ShowIncludes>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <ForcedIncludeFiles>StdAfx.h</ForcedIncludeFiles>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <ResourceCompile />
+    <ResourceCompile>
+      <ShowProgress>true</ShowProgress>
+      <Culture>0x0809</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <ForcedIncludeFiles>StdAfx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ExternalOutput.cpp" />
+    <ClCompile Include="HookMethods.cpp" />
+    <ClCompile Include="IO.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MFDWindow.cpp" />
+    <ClCompile Include="PanelClickRecorderOutput.cpp" />
+    <ClCompile Include="PanelEventOutput.cpp" />
+    <ClCompile Include="Queue.cpp" />
+    <ClCompile Include="Serial.cpp" />
+    <ClCompile Include="SerialInput.cpp" />
+    <ClCompile Include="SimpitManager.cpp" />
+    <ClCompile Include="SimpitMFD.cpp" />
+    <ClCompile Include="ThreadSafeOutput.cpp" />
+    <ClCompile Include="VesselHook.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ExternalOutput.h" />
+    <ClInclude Include="HookClass.h" />
+    <ClInclude Include="HookMethods.h" />
+    <ClInclude Include="MFDWindow.h" />
+    <ClInclude Include="MFD_Stuff.h" />
+    <ClInclude Include="PanelClickRecorderOutput.h" />
+    <ClInclude Include="PanelMouseEvent.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="IO.h" />
+    <ClInclude Include="Output.h" />
+    <ClInclude Include="PanelEventOutput.h" />
+    <ClInclude Include="PanelMouseId.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Serial.h" />
+    <ClInclude Include="SerialInput.h" />
+    <ClInclude Include="SimpitManager.h" />
+    <ClInclude Include="SimpitMFD.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="ThreadSafeOutput.h" />
+    <ClInclude Include="VesselHook.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Bitmaps\bt_stick.bmp" />
+    <None Include="diagram.cd" />
+    <None Include="info.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ExtMFD.rc">
+      <DeploymentContent>false</DeploymentContent>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelperDLL\HelperDLL.vcxproj">
+      <Project>{944e0095-c23f-4596-8020-79435bc4b65b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

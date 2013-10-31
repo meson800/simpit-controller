@@ -1,0 +1,10 @@
+INPUTS:
+SerialInput is done
+
+OUTPUTS:
+SimpitMFD is done
+PanelClickRecorderOutput is done
+PanelEventOutput is done
+
+Issues with a map- what if the item is not in the map?
+Use map::count!

@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Inputs">
+      <UniqueIdentifier>{f0c8b650-7ce5-4f49-8ee5-f4daa9e64691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Outputs">
+      <UniqueIdentifier>{43780735-0ce2-4f09-9e27-9aca56830270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hooking">
+      <UniqueIdentifier>{e1ea14e0-63c6-4bfa-a3cb-f827ec2e049b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{162f1f2d-36ec-4bd9-9508-4b7ac8d4b8b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MFD">
+      <UniqueIdentifier>{7edd1042-5d94-4cdd-ba5c-d7c7ab1b7512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Inputs">
+      <UniqueIdentifier>{8586d696-ddbd-4b00-902b-0cbb8d2366a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hooking">
+      <UniqueIdentifier>{d5042380-7486-45d5-bac6-0dce946a0f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Outputs">
+      <UniqueIdentifier>{f59ab83f-c97a-4421-a9c2-23298b0246d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Outputs\MFD">
+      <UniqueIdentifier>{4f4faab4-fb4f-4b7f-aa15-266c837939ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpitManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SerialInput.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="Serial.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="Queue.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="VesselHook.cpp">
+      <Filter>Source Files\Hooking</Filter>
+    </ClCompile>
+    <ClCompile Include="HookMethods.cpp">
+      <Filter>Source Files\Hooking</Filter>
+    </ClCompile>
+    <ClCompile Include="MFDWindow.cpp">
+      <Filter>Source Files\Outputs\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpitMFD.cpp">
+      <Filter>Source Files\Outputs\MFD</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelEventOutput.cpp">
+      <Filter>Source Files\Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelClickRecorderOutput.cpp">
+      <Filter>Source Files\Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="ExternalOutput.cpp">
+      <Filter>Source Files\Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadSafeOutput.cpp">
+      <Filter>Source Files\Outputs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SimpitManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Serial.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="SerialInput.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="ExternalOutput.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelEventOutput.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelClickRecorderOutput.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="HookClass.h">
+      <Filter>Header Files\Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="HookMethods.h">
+      <Filter>Header Files\Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="VesselHook.h">
+      <Filter>Header Files\Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelMouseEvent.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelMouseId.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="MFD_Stuff.h">
+      <Filter>Header Files\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="MFDWindow.h">
+      <Filter>Header Files\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpitMFD.h">
+      <Filter>Header Files\MFD</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadSafeOutput.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="diagram.cd" />
+    <None Include="Bitmaps\bt_stick.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="info.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ExtMFD.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
