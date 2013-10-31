@@ -3,6 +3,30 @@ Orbiter Simpit Controller
 
 An Orbiter Module which enables Orbiter to interact the physical world; useful in creating simpits.
 
+What is it?
+-----------
+[Orbiter Space Flight Simulator](http://orbit.medphys.ucl.ac.uk/) is a highly-accurate simulator of spaceflight.
+Several addon developers have created additional vessels, from the Space Shuttle to the futuristic DeltaGlider IV.
+
+The module creates an interface for Orbiter users to the outside world.  Now, external devices (for example, an
+Arduino connected to outside switches/buttons) can be used to trigger mouse clicks, MFD clicks, or other inputs.
+
+Installation
+------------
+1.Clone the repo into the root folder of Orbiter.
+2.In Orbiter, under the Modules tab, enable "Simpit"
+3.Edit Config/simpit_config.cfg to set up the module in the desired way.  See CONFIG.md for more information.
+
+How does it work?
+-----------------
+
+
+
+Developer Information
+---------------------
+Developers can add their own sub-modules to add additional IO modules to extend the capabilities of the modules
+See DEVELOP.md for more information
+
 License
 -------
 Copyright (c) 2013 Christopher Johnstone
