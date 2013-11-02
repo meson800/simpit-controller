@@ -23,6 +23,17 @@ void ExternalOutput::handleEvent(Event ev)
 	//check to see if it is even in the map
 	if (eventMapping.count(&ev))
 	{
+		STARTUPINFO         siStartupInfo;
+		PROCESS_INFORMATION piProcessInfo;
+
+		memset(&siStartupInfo, 0, sizeof(siStartupInfo));
+		memset(&piProcessInfo, 0, sizeof(piProcessInfo));
+
+		siStartupInfo.cb = sizeof(siStartupInfo);
+
+		CreateProcess(eventMapping[&ev].name,     // Application name
+                     eventMapping[&ev].args,                 // Application arguments
+                     0,0,FALSE,CREATE_DEFAULT_ERROR_MODE,0,0,&siStartupInfo,&piProcessInfo);
 	}
 
 
