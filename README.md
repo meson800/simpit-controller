@@ -1,11 +1,11 @@
 Orbiter Simpit Controller
 =================
 
-An Orbiter Module which enables Orbiter to interact the physical world; this is useful in creating simpits.
+An Orbiter Module which enables Orbiter to interact with the physical world; this is useful in creating simpits.
 
 What is it?
 -----------
-[Orbiter](http://orbit.medphys.ucl.ac.uk/) is a highly accurate simulator of spaceflight.
+[Orbiter](http://orbit.medphys.ucl.ac.uk/) is a highly accurate spaceflight simulator.
 Several addon developers have created additional vessels, from the Space Shuttle to the futuristic DeltaGlider IV.
 
 The module creates an interface for Orbiter users to the outside world.  Now, external devices (for example, an
@@ -18,16 +18,32 @@ This module is initially set up with a generic configuration, but can be configu
 Some uses are:  
 *    Positioning those pesky External MFD's automatically at simualtion start instead of doing it manually. 
 *    Outputting certain state items to a screen (such as fuel state, local dynamic pressure, etc).
-*    Connecting physical switches to an Arduino/microcomputer, and having physical switches trigger virtual Orbiter.
-mouseclicks.
+*    Connecting physical switches to an Arduino/microcomputer, and having physical switches trigger virtual Orbiter
+mouse clicks.
 *    Running a full simpit, with physical switches, several external MFD's, and state-controlled lighting.  
 
 Installation
 ------------
-1.Clone the repo into the root folder of Orbiter (where Orbiter.exe resides), either through Git or through 
-downloading a zip folder of the current revision.  
-2.In Orbiter, under the Modules tab, enable "Simpit".  
-3.Edit Config/simpit_config.cfg to set up the module in the desired way.  See [CONFIG](/CONFIG.md) for more information.  
+1. Get the latest version, either through Git or a zip file.
+    * Git Method
+        1. Clone the repo into an empty folder
+
+		'''
+            git clone https://github.com/meson800/simpit-controller.git
+        '''
+        2. Install Orbiter by unzipping the Orbiter zip file into the same folder as the cloned repo 
+        3. Pull the latest version of the repo to ensure no files were overwritten
+        
+		'''
+            git pull
+        '''
+    * Zip Method
+        1. Download the zip file containing the latest revision (should reside at
+[master.zip](https://github.com/meson800/simpit-controller/archive/master.zip)  
+        2. Unzip into an Orbiter installation.  
+
+2. In Orbiter, under the Modules tab, enable "Simpit".  
+3. Edit Config/simpit_config.cfg to set up the module in the desired way.  See [CONFIG](/CONFIG.md) for more information.  
 
 How does it work?
 -----------------
@@ -40,8 +56,8 @@ have the chance to handle the event.
 
 Developer Information
 ---------------------
-Developers can add their own sub-modules to add additional IO modules to extend the capabilities of the modules  
-See [DEVELOP.md](/DEVELOP.md) for more information
+Developers can add their own sub-modules to add additional input/output modules to extend the capabilities of the modules  
+See [DEVELOP](/DEVELOP.md) for more information
 
 License
 -------
