@@ -28,15 +28,15 @@ Installation
     * Git Method
         1. Clone the repo into an empty folder
 
-		'''
+            ```
             git clone https://github.com/meson800/simpit-controller.git
-        '''
+            ```
         2. Install Orbiter by unzipping the Orbiter zip file into the same folder as the cloned repo 
         3. Pull the latest version of the repo to ensure no files were overwritten
         
-		'''
+            ```
             git pull
-        '''
+            ```
     * Zip Method
         1. Download the zip file containing the latest revision (should reside at
 [master.zip](https://github.com/meson800/simpit-controller/archive/master.zip)  
