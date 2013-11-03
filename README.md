@@ -39,7 +39,7 @@ Installation
             ```
     * Zip Method
         1. Download the zip file containing the latest revision (should reside at
-[master.zip](https://github.com/meson800/simpit-controller/archive/master.zip)  
+[master.zip](https://github.com/meson800/simpit-controller/archive/master.zip))
         2. Unzip into an Orbiter installation.  
 
 2. In Orbiter, under the Modules tab, enable "Simpit".  
