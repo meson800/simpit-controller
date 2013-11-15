@@ -14,6 +14,12 @@ void PanelClickRecorderOutput::load(FILEHANDLE inputFile)
 				//set up hooking
 				
 			}
+			//see if recording should be enabled
+			record = false;
+			if (sscanf(line,"AUTO_RECORD = 1") == 1)
+			{
+				record = true;
+			}
 		}
 	}
 }
@@ -23,6 +29,10 @@ void PanelClickRecorderOutput::SimulationStart()
 	OBJHANDLE hVessel = oapiGetVesselByName(vesselName);
 	if (oapiIsVessel(hVessel))
 		InstallVesselHook(&(VESSEL2)oapiGetVesselInterface(hVessel));
+}
+
+void PanelClickRecorderOutput::handleEvent(Event ev)
+{
 }
 
 void PanelClickRecorderOutput::FocusChanged(OBJHANDLE old_focus, OBJHANDLE new_focus)

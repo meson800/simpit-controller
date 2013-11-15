@@ -16,11 +16,13 @@ public:
 	void SimulationStart();
 	void SimulationEnd();
 	void FocusChanged(OBJHANDLE old_focus, OBJHANDLE new_focus);
+	void handleEvent(Event ev);
 
 
 
 private:
 	char vesselName[255];
+	bool record;
 };
 
 #endif

@@ -14,7 +14,7 @@
       <FileName>Input.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SerialInput" Collapsed="true">
+  <Class Name="SerialInput">
     <Position X="4.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAJCAAIAAAAAAEAAAAAAAAAAAAARAAAAEAAA=</HashCode>
@@ -31,7 +31,7 @@
   <Class Name="PanelClickRecorderOutput" Collapsed="true">
     <Position X="10" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAEAICBAAAAAAAAAIAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>ABAAAAAEAICBABAAAAAAAIAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>PanelClickRecorderOutput.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -52,7 +52,7 @@
   <Class Name="PanelEventOutput" Collapsed="true">
     <Position X="14" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAICEAAAAAAAAAQCAAAAAABAAAAAAggAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAICEAAAAAAAAAACAAAAAABAAAAAAggAAAAA=</HashCode>
       <FileName>PanelEventOutput.h</FileName>
     </TypeIdentifier>
   </Class>
