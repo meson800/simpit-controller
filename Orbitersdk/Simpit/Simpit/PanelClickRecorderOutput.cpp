@@ -3,6 +3,7 @@
 void PanelClickRecorderOutput::load(FILEHANDLE inputFile)
 {
 	//inputFile = this->readToSectionStart(inputFile, "PANEL_CLICK_RECORDER");
+	record = false;
 	char *line;
 	while (oapiReadScenario_nextline(inputFile,line))
 	{
@@ -15,7 +16,6 @@ void PanelClickRecorderOutput::load(FILEHANDLE inputFile)
 				
 			}
 			//see if recording should be enabled
-			record = false;
 			if (sscanf(line,"AUTO_RECORD = 1") == 1)
 			{
 				record = true;
