@@ -4,9 +4,10 @@
 class PanelMouseEvent
 {
 public:
-	PanelMouseEvent() : mx(0), my(0), mouseEvent(0) {}
+	PanelMouseEvent() : id(0),mx(0), my(0), mouseEvent(0) {}
+	PanelMouseEvent(int _id, int _ev, int _mx, int _my) : id(_id), mouseEvent(_ev), mx(_mx), my(_my) {}
 	PanelMouseEvent(int _mx, int _my, int _mouseEvent) : mx(_mx), my(_my), mouseEvent(_mouseEvent) {}
-	int mx, my, mouseEvent;
+	int mx, my, mouseEvent, id;
 };
 
 #endif
