@@ -9,7 +9,9 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-union Event
+#include "PanelClickRecorderOutput.h"
+
+union Hook_Event
 {
 	struct
 	{
@@ -96,6 +98,7 @@ class HookMethods :VESSEL2
 public:
 	// Constructor	
 	HookMethods ();	
+	HookMethods (PanelClickRecorderOutput * _callbackClass);
 	// Callback functions
 	/*virtual void clbkSetClassCaps (FILEHANDLE cfg);
 	virtual void clbkSaveState (FILEHANDLE scn);
@@ -125,6 +128,7 @@ public:
 	virtual bool clbkLoadVC (int id);*/
 	virtual bool clbkVCMouseEvent (int id, int ev, VECTOR3 &p);
 	//virtual bool clbkVCRedrawEvent (int id, int event, SURFHANDLE surf);
+	PanelClickRecorderOutput * callbackClass;
 };
 
 #endif // !defined(AFX_HOOKMETHODS_H__46970382_7FE2_11DB_BD29_0002442A51E7__INCLUDED_)

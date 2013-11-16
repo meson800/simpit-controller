@@ -16,6 +16,10 @@ HookMethods::HookMethods():VESSEL2(0,0)
 {
 }
 
+HookMethods::HookMethods(PanelClickRecorderOutput * _callbackClass): callbackClass(_callbackClass), VESSEL2(0,0)
+{
+}
+
 /*HookMethods::~HookMethods()
 {
 
@@ -27,7 +31,7 @@ HookMethods::HookMethods():VESSEL2(0,0)
 					{														\
 						FILE *l=GetEventLogFile();							\
 						Queue *q=GetEventQueue();							\
-						union Event *event=new union Event					
+						union Hook_Event *event=new union Hook_Event					
 
 #define POSTTASK		q->Enqueue(event);									\
 						fflush(l);											\
@@ -42,7 +46,7 @@ HookMethods::HookMethods():VESSEL2(0,0)
 					{														\
 						FILE *l=GetEventLogFile();							\
 						Queue *q=GetEventQueue();							\
-						union Event *event=new union Event
+						union Hook_Event *event=new union Hook_Event
 
 #define POSTPOST2		q->Enqueue(event);									\
 						fflush(l);											\

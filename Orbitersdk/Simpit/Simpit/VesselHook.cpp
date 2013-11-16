@@ -487,12 +487,12 @@ void CleanUpHooking()
 	if (HookTableSize<0x80)	for(;i<=HookTableSize;i++) unhookVesselInternal(i);
 	HookTableSize=0xFE;
 	delete HookMethodObject;
-	union Event *entry;
+	union Hook_Event *entry;
 	while (!HookQueue->is_empty())
 	{
 		fprintf(EventLogFile, "Clearing queue entry #%d\n", HookQueue->get_count());
 		fflush(EventLogFile);
-		entry=(union Event *)HookQueue->Dequeue();
+		entry=(union Hook_Event *)HookQueue->Dequeue();
 		delete entry;
 	}
 	delete HookQueue;
