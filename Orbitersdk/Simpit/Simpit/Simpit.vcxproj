@@ -79,6 +79,7 @@
   <ItemGroup>
     <ClCompile Include="ExternalOutput.cpp" />
     <ClCompile Include="HookMethods.cpp" />
+    <ClCompile Include="HookObserver.cpp" />
     <ClCompile Include="IO.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MFDWindow.cpp" />

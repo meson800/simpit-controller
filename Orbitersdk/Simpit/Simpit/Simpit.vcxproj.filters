@@ -57,9 +57,6 @@
     <ClCompile Include="Serial.cpp">
       <Filter>Source Files\Inputs</Filter>
     </ClCompile>
-    <ClCompile Include="Queue.cpp">
-      <Filter>Source Files\Inputs</Filter>
-    </ClCompile>
     <ClCompile Include="VesselHook.cpp">
       <Filter>Source Files\Hooking</Filter>
     </ClCompile>
@@ -84,6 +81,12 @@
     <ClCompile Include="ThreadSafeOutput.cpp">
       <Filter>Source Files\Outputs</Filter>
     </ClCompile>
+    <ClCompile Include="Queue.cpp">
+      <Filter>Source Files\Hooking</Filter>
+    </ClCompile>
+    <ClCompile Include="HookObserver.cpp">
+      <Filter>Source Files\Hooking</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpitManager.h">
@@ -102,9 +105,6 @@
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
     <ClInclude Include="Serial.h">
-      <Filter>Header Files\Inputs</Filter>
-    </ClInclude>
-    <ClInclude Include="Queue.h">
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
     <ClInclude Include="SerialInput.h">
@@ -151,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="ThreadSafeOutput.h">
       <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files\Hooking</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
