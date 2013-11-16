@@ -40,7 +40,6 @@ static DWORD VesselInstanceTable[16384];
 static bool HookEnabled=true;
 static bool EventsEnabled=false;
 int InstallVesselHook(VESSEL2 *link);
-int InstallVesselHook(VESSEL2 *link 
 int registerVesselInstance(VESSEL2 *link);
 int RemoveVesselHook(VESSEL2 *link);
 int unregisterVesselInstance(VESSEL2 *link);

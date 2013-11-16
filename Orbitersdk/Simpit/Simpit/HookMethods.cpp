@@ -16,10 +16,6 @@ HookMethods::HookMethods():VESSEL2(0,0)
 {
 }
 
-HookMethods::HookMethods(PanelClickRecorderOutput * _callbackClass): callbackClass(_callbackClass), VESSEL2(0,0)
-{
-}
-
 /*HookMethods::~HookMethods()
 {
 
@@ -268,6 +264,7 @@ bool HookMethods::clbkLoadPanel (int id)
 }*/
 bool HookMethods::clbkPanelMouseEvent (int id, int ev, int mx, int my)
 {
+	observer.h_handlePanelMouseEvent(id,ev,mx,my);
 	bool retvalue=true;
 	PRETASK2	
 	{
