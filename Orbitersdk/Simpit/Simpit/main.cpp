@@ -11,6 +11,7 @@
 HINSTANCE hDLL;
 
 #include "SimpitManager.h"
+#include "SimpitObserver.h"
 
 DLLCLBK void InitModule (HINSTANCE hModule)
 {
@@ -22,8 +23,11 @@ DLLCLBK void InitModule (HINSTANCE hModule)
 	//init the MFD stuff
 	InitMFD(hDLL);
 
+	//set the manager up so stuff can hook
+	SimpitManager * manager = new SimpitManager(hDLL);
+	SimpitObserver::setUpManager(manager);
 	//register module
-	oapiRegisterModule(new SimpitManager(hDLL));
+	oapiRegisterModule(manager);
 
 }
 
