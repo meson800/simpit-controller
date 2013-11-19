@@ -10,8 +10,8 @@
 #include "MFD_Stuff.h"
 HINSTANCE hDLL;
 
-#include "SimpitManager.h"
 #include "SimpitObserver.h"
+#include "SimpitManager.h"
 
 DLLCLBK void InitModule (HINSTANCE hModule)
 {

@@ -13,7 +13,7 @@
 class PanelEventOutput : public ThreadSafeOutput
 {
 public:
-	PanelEventOutput(boost::function<void (Event)> _handle);
+	PanelEventOutput() {}
 	void load(FILEHANDLE inputFile);
 	void save(FILEHANDLE outputFile);
 	void threadSafeHandleEvent(Event ev);

@@ -16,7 +16,7 @@
 class SimpitMFD : public Output
 {
 public:
-	SimpitMFD(boost::function<void (Event)> _handle, HINSTANCE hDLL);
+	SimpitMFD(HINSTANCE hDLL);
 	~SimpitMFD();
 	void load(FILEHANDLE inputFile);
 	void save(FILEHANDLE outputFile) {}

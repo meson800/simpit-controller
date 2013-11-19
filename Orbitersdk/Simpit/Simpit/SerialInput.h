@@ -4,14 +4,16 @@
 #include <string>
 #include <boost/thread.hpp>
 
+#include "SimpitObserver.h"
 #include "Input.h"
 #include "Serial.h"
+
 
 
 class SerialInput : public Input
 {
 public:
-	SerialInput(boost::function<void (Event)> _handle) : Input(_handle), serial("COM3") {handleEventFunc = _handle;}
+	SerialInput() : serial("COM3") {}
 	~SerialInput();
 	void load (FILEHANDLE inputFile);
 	void save(FILEHANDLE outputFile) {}

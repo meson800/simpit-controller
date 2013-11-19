@@ -11,13 +11,13 @@ SimpitManager::SimpitManager(HINSTANCE hDLL) : Module(hDLL)
 		if (strcmp(moduleName,"") != 0)
 		{
 			if (strcmp(moduleName, "BEGIN PANEL_EVENT_OUTPUT") == 0)
-				modules.push_back(new PanelEventOutput(boost::bind(&SimpitManager::handleEvent,this, _1)));
+				modules.push_back(new PanelEventOutput());
 			else if(strcmp(moduleName, "BEGIN SERIAL_INPUT") == 0)
-				modules.push_back(new SerialInput(boost::bind(&SimpitManager::handleEvent,this, _1)));
+				modules.push_back(new SerialInput());
 			else if(strcmp(moduleName, "BEGIN PANEL_CLICK_RECORDER") == 0)
-				modules.push_back(new PanelClickRecorderOutput(boost::bind(&SimpitManager::handleEvent,this,_1)));
+				modules.push_back(new PanelClickRecorderOutput());
 			else if(strcmp(moduleName, "BEGIN SIMPIT_MFD") == 0)
-				modules.push_back(new SimpitMFD(boost::bind(&SimpitManager::handleEvent,this,_1),hDLL));
+				modules.push_back(new SimpitMFD(hDLL));
 
 			//now give it the file to load
 			modules.back()->load(configFile);

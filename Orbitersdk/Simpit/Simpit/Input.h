@@ -6,7 +6,7 @@
 class Input : public IO
 {
 public:
-	Input(boost::function<void (Event)> _handle) : IO(_handle) {handleEventFunc = _handle;}
+	Input(){}
 	void handleEvent(Event ev) {}
 };
 

@@ -11,7 +11,7 @@
 class ThreadSafeOutput : public Output
 {
 public:
-	ThreadSafeOutput(boost::function<void (Event)> _handle);
+	ThreadSafeOutput();
 	~ThreadSafeOutput();
 	void handleEvent(Event ev);
 	void virtual threadSafeHandleEvent(Event ev) {}

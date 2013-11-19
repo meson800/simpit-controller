@@ -4,6 +4,8 @@
 #include "Event.h"
 #include "SimpitManager.h"
 
+class SimpitManager;
+
 class SimpitObserver
 {
 public:

@@ -16,7 +16,7 @@
 class PanelClickRecorderOutput : public Output
 {
 public:
-	PanelClickRecorderOutput(boost::function<void (Event)> _handle) :  Output(_handle) {handleEventFunc = _handle;}
+	PanelClickRecorderOutput() {}
 	void load(FILEHANDLE inputFile);
 	void save(FILEHANDLE outputFile) {}
 	void SimulationStart();

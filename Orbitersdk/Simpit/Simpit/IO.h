@@ -4,14 +4,13 @@
 #include "Orbitersdk.h"
 
 #include <string>
-#include <boost/function.hpp>
 
 #include "Event.h"
 
 class IO
 {
 public:
-	IO(boost::function<void (Event)> _handle) : handleEventFunc(_handle) {}
+	IO(){}
 	void virtual load(FILEHANDLE inputFile) = 0;
 	void virtual save(FILEHANDLE outputFile) = 0;
 	FILEHANDLE readToSectionStart(FILEHANDLE file, std::string name);
@@ -21,9 +20,6 @@ public:
 	void virtual PreStep(double simt, double simdt, double mjd) {}
 	void virtual PostStep(double simt, double simdt, double mjd) {}
 	void virtual FocusChanged(OBJHANDLE old_focus, OBJHANDLE new_focus) {}
-
-protected:
-	boost::function<void (Event)> handleEventFunc;
 };
 
 #endif

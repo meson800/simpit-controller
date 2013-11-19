@@ -1,11 +1,5 @@
 #include "PanelEventOutput.h"
 
-PanelEventOutput::PanelEventOutput(boost::function<void (Event)> _handle) : ThreadSafeOutput(_handle)
-{
-	handleEventFunc = _handle;
-
-}
-
 
 void PanelEventOutput::load(FILEHANDLE inputFile)
 {

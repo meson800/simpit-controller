@@ -53,7 +53,7 @@ void SerialInput::readSerialThread()
 					buffer = buffer.substr(buffer.find("/")+1,buffer.length() - 7);
 
 					//send event upstream
-					handleEventFunc(Event(switchNum,newState));
+					SimpitObserver::handleEvent(Event(switchNum,newState));
 				}
 
 			}

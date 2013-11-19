@@ -1,8 +1,7 @@
 #include "SimpitMFD.h"
 
-SimpitMFD::SimpitMFD(boost::function<void (Event)> _handle, HINSTANCE hDLL): Output(_handle)
+SimpitMFD::SimpitMFD(HINSTANCE hDLL)
 {
-	handleEventFunc = _handle;
 	moduleHandle = hDLL;
 	hasRegion = false;
 	

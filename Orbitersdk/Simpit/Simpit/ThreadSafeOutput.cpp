@@ -1,8 +1,7 @@
 #include "ThreadSafeOutput.h"
 
-ThreadSafeOutput::ThreadSafeOutput(boost::function<void (Event)> _handle) : Output(_handle)
+ThreadSafeOutput::ThreadSafeOutput()
 {
-	handleEventFunc = _handle;
 	//set up critical section for below
 	InitializeCriticalSection(&ourCritSection);
 }
