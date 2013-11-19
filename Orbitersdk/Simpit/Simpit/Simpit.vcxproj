@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\Utils\boost\include;$(SDKDir)\Simpit\HelperDLL</IncludePath>
-    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;C:\Utils\boost\lib;$(SDKLibDir)</LibraryPath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(SDKDir)\Simpit\HelperDLL</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SDKLibDir)</LibraryPath>
     <OutDir>$(OrbiterDir)\Modules\Plugin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -90,6 +90,7 @@
     <ClCompile Include="SerialInput.cpp" />
     <ClCompile Include="SimpitManager.cpp" />
     <ClCompile Include="SimpitMFD.cpp" />
+    <ClCompile Include="SimpitObserver.cpp" />
     <ClCompile Include="ThreadSafeOutput.cpp" />
     <ClCompile Include="VesselHook.cpp" />
   </ItemGroup>
@@ -97,6 +98,7 @@
     <ClInclude Include="ExternalOutput.h" />
     <ClInclude Include="HookClass.h" />
     <ClInclude Include="HookMethods.h" />
+    <ClInclude Include="HookObserver.h" />
     <ClInclude Include="MFDWindow.h" />
     <ClInclude Include="MFD_Stuff.h" />
     <ClInclude Include="PanelClickRecorderOutput.h" />
@@ -113,6 +115,7 @@
     <ClInclude Include="SerialInput.h" />
     <ClInclude Include="SimpitManager.h" />
     <ClInclude Include="SimpitMFD.h" />
+    <ClInclude Include="SimpitObserver.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="ThreadSafeOutput.h" />
     <ClInclude Include="VesselHook.h" />

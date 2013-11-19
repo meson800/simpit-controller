@@ -87,6 +87,9 @@
     <ClCompile Include="HookObserver.cpp">
       <Filter>Source Files\Hooking</Filter>
     </ClCompile>
+    <ClCompile Include="SimpitObserver.cpp">
+      <Filter>Source Files\Hooking</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpitManager.h">
@@ -111,9 +114,6 @@
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
     <ClInclude Include="ExternalOutput.h">
-      <Filter>Header Files\Outputs</Filter>
-    </ClInclude>
-    <ClInclude Include="PanelEventOutput.h">
       <Filter>Header Files\Outputs</Filter>
     </ClInclude>
     <ClInclude Include="PanelClickRecorderOutput.h">
@@ -154,6 +154,15 @@
     </ClInclude>
     <ClInclude Include="Queue.h">
       <Filter>Header Files\Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelEventOutput.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="HookObserver.h">
+      <Filter>Header Files\Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpitObserver.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

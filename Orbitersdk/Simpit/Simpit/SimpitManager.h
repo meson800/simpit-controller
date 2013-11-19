@@ -5,7 +5,6 @@
 
 #include <vector>
 #include <cstring>
-#include <boost/bind.hpp>
 using namespace std;
 
 #include "Orbitersdk.h"

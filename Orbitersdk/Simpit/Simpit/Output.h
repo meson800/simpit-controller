@@ -8,7 +8,7 @@ class IO;
 class Output : public IO
 {
 public:
-	Output(boost::function<void (Event)> _handle) : IO(_handle) {handleEventFunc = _handle;}
+	Output() {}
 
 };
 //Include user definitions, switch state 1/0 and where it should target
