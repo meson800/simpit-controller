@@ -6,6 +6,13 @@ SerialInput::~SerialInput()
 	serial.~Serial();
 }
 
+
+DWORD WINAPI SerialThreadFunction( LPVOID lpParam ) 
+{ 
+	((SerialInput *)(lpParam))->readSerialThread();
+	return 0;
+}
+
 void SerialInput::load(FILEHANDLE inputFile)
 {
 	//inputFile = this->readToSectionStart(inputFile,"SERIAL_INPUT");
@@ -21,8 +28,20 @@ void SerialInput::load(FILEHANDLE inputFile)
 				{
 					serial = Serial(com);
 					serial.WriteData("f",1);
-			
-					boost::thread workerThread(boost::bind(&SerialInput::readSerialThread,this));
+					
+					//make the argument for our function to access
+					SerialInput * thisInput = this;
+					//do windows threading
+					HANDLE hThread = CreateThread( 
+						NULL,                   // default security attributes
+						NULL,                      // use default stack size  
+						SerialThreadFunction,       // thread function name
+						thisInput,          // argument to thread function 
+						NULL,                      // use default creation flags 
+						NULL);   // returns nothing
+
+					//detach the thread
+					CloseHandle(hThread);
 				}
 				if (sscanf(line,"FORMAT_STRING = %s", formatString) == 1)
 				{}
