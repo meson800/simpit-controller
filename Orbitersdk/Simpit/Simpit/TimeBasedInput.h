@@ -12,7 +12,7 @@
 //triggers an event when the difference between the time in the struct and the current time is greater than dt
 struct TimeSpec
 {
-	TimeSpec(int _type, double dt,Event _ev) : type(_type), time(dt), eventToFire(_ev) {}
+	TimeSpec(int _type, double _dt,Event _ev) : type(_type), dt(_dt), time(0), eventToFire(_ev) {}
 	int type;	//type 0 = sim start, type 1 = sim time interval, type 2 = actual interval	
 	double dt, time;
 	Event eventToFire;
