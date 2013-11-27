@@ -92,6 +92,7 @@
     <ClCompile Include="SimpitMFD.cpp" />
     <ClCompile Include="SimpitObserver.cpp" />
     <ClCompile Include="ThreadSafeOutput.cpp" />
+    <ClCompile Include="TimeBasedInput.cpp" />
     <ClCompile Include="VesselHook.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +119,7 @@
     <ClInclude Include="SimpitObserver.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="ThreadSafeOutput.h" />
+    <ClInclude Include="TimeBasedInput.h" />
     <ClInclude Include="VesselHook.h" />
   </ItemGroup>
   <ItemGroup>

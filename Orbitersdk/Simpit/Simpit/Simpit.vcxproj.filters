@@ -90,6 +90,9 @@
     <ClCompile Include="SimpitObserver.cpp">
       <Filter>Source Files\Hooking</Filter>
     </ClCompile>
+    <ClCompile Include="TimeBasedInput.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpitManager.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="SimpitObserver.h">
       <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeBasedInput.h">
+      <Filter>Header Files\Inputs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

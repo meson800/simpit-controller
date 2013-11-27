@@ -14,10 +14,15 @@ using namespace std;
 //include modules
 
 
-#include "PanelEventOutput.h"
 #include "SerialInput.h"
-#include "PanelClickRecorderOutput.h"
 #include "SimpitMFD.h"
+#include "ExternalOutput.h"
+#include "PanelClickRecorderOutput.h"
+#include "PanelEventOutput.h"
+
+
+
+
 
 
 
