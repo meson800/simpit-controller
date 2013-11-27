@@ -15,6 +15,8 @@ using namespace std;
 
 
 #include "SerialInput.h"
+#include "TimeBasedInput.h"
+
 #include "SimpitMFD.h"
 #include "ExternalOutput.h"
 #include "PanelClickRecorderOutput.h"

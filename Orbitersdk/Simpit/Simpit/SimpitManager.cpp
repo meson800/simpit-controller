@@ -20,6 +20,8 @@ SimpitManager::SimpitManager(HINSTANCE hDLL) : Module(hDLL)
 				modules.push_back(new SimpitMFD(hDLL));
 			else if(strcmp(moduleName, "BEGIN EXTERNAL_OUTPUT") == 0)
 				modules.push_back(new ExternalOutput());
+			else if(strcmp(moduleName, "BEGIN TIME_BASED_INPUT") == 0)
+				modules.push_back(new TimeBasedInput());
 
 			//now give it the file to load
 			modules.back()->load(configFile);
