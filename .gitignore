@@ -226,3 +226,46 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+/Config/Modules/Console.cfg
+/Config/Vessels/UCGO
+/Config/Vessels/Velcro
+/Config/Vessels
+/Doc/BaseSyncMFD
+/Doc/DeltaGliderIV
+/Doc/SBB41
+/Doc/Technotes
+/Doc/TransX
+/Doc/UMmu_SDK
+/Doc/UniversalCarsAndCargos
+/Doc/UniversalCarsAndCargos
+/Doc/AeroBrake.pdf
+/Doc/Atlantis.pdf
+/Doc/Atlantis_MMU_Sat_30.pdf
+/Doc/Change.pdf
+/Doc/Credit.pdf
+/Doc/D3D9Client.pdf
+/Doc/DeltaGlider.pdf
+/Doc/Dragonfly.pdf
+/Doc/Orbiter.pdf
+/Doc/OrbiterConfig.pdf
+/Doc/ScenarioEditor.pdf
+/Doc/ShuttleA.pdf
+/Doc/StationBuildingBlocks40.txt
+/Doc/UCGO_CargoContainerV1.pdf
+/Doc/XR Flight Operations Manual 2.3.pdf
+/Doc/XR5-ER Extended Range Payload Systems 1.txt
+/Doc/XR5_UCGOPayloadPlatformV2.pdf
+/Modules/D3D9Client
+/Modules/D3D9Client20
+/Modules/Server/Config
+/Modules/ShuttlePB.exp
+/Modules/Plugin/XR2Ravenstar.ld
+/Modules/Plugin/XR5Vanguard.ld
+/Modules/Plugin/Terrain.exp
+/Modules/Plugin/Terrain.lib
+/Modules/Plugin/Delta Glider IV Simulator.exp
+/Modules/Plugin/Delta Glider IV Simulator.lib
+/Modules/Plugin/DeltaGlider.ld
+/Modules/Plugin/DeltaGliderIV.ld
+/Modules/Plugin/DeltaGliderXR1.ld
+/Modules/ShuttlePB.lib
