@@ -10,17 +10,11 @@ using namespace std;
 #include "Orbitersdk.h"
 #include "OrbiterAPI.h"
 #include "Event.h"
+#include "ModuleFactory.h"
 
 //include modules
 
-
-#include "SerialInput.h"
-#include "TimeBasedInput.h"
-
-#include "SimpitMFD.h"
-#include "ExternalOutput.h"
-#include "PanelClickRecorderOutput.h"
-#include "PanelEventOutput.h"
+#include "IO.h"
 
 
 
