@@ -83,6 +83,7 @@
     <ClCompile Include="IO.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MFDWindow.cpp" />
+    <ClCompile Include="ModuleFactory.cpp" />
     <ClCompile Include="PanelClickRecorderOutput.cpp" />
     <ClCompile Include="PanelEventOutput.cpp" />
     <ClCompile Include="Queue.cpp" />
@@ -102,6 +103,7 @@
     <ClInclude Include="HookObserver.h" />
     <ClInclude Include="MFDWindow.h" />
     <ClInclude Include="MFD_Stuff.h" />
+    <ClInclude Include="ModuleFactory.h" />
     <ClInclude Include="PanelClickRecorderOutput.h" />
     <ClInclude Include="PanelMouseEvent.h" />
     <ClInclude Include="Event.h" />

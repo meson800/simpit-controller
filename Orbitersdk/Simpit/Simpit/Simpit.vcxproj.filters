@@ -93,6 +93,9 @@
     <ClCompile Include="TimeBasedInput.cpp">
       <Filter>Source Files\Inputs</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpitManager.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="TimeBasedInput.h">
       <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
