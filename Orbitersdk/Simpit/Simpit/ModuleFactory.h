@@ -16,7 +16,7 @@
 class ModuleFactory
 {
 public:
-	void createModules(vector<IO *>& moduleVector, HINSTANCE hDLL);
+	static void createModules(vector<IO *>& moduleVector, HINSTANCE hDLL);
 };
 
 #endif
