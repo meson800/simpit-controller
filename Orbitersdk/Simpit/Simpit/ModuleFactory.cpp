@@ -28,3 +28,22 @@ void ModuleFactory::createModules(vector<IO *>& moduleVector, HINSTANCE hDLL)
 		}
 	}
 }
+
+void ModuleFactory::loadModuleFromFile(IO * module, FILEHANDLE configFile)
+{
+	char *line;
+	char key[256];
+	char value[256];
+	//reads until EOF or "END"
+	while (oapiReadScenario_nextline(configFile, line))
+	{
+		//ignores comments
+		if (line[0] != ';')
+		{
+			//read the key and the value, then call the load on the module
+			sscanf(line, "%255s = %255[^]", key, value);
+			//send the key and value to the module!
+			//module->load(key, value);
+		}
+	}
+}

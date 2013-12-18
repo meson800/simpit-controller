@@ -16,7 +16,12 @@
 class ModuleFactory
 {
 public:
+	//creates all of the modules into the vector
 	static void createModules(vector<IO *>& moduleVector, HINSTANCE hDLL);
+private:
+	//inside each module's block of configuration, it calls each module's load function with
+	//the key value pair.  This seperates the loading code from each of the modules
+	static void loadModuleFromFile(IO * module, FILEHANDLE configFile);
 };
 
 #endif
