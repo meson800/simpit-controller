@@ -16,7 +16,7 @@ class ExternalOutput : public Output
 {
 public:
 	ExternalOutput(){}
-	void load(FILEHANDLE inputFile);
+	void load(const char * key, const char * value);
 	void save(FILEHANDLE outputFile) {}
 	void handleEvent(Event ev);
 

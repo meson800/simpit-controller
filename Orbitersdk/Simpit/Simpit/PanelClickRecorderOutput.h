@@ -17,7 +17,7 @@ class PanelClickRecorderOutput : public Output
 {
 public:
 	PanelClickRecorderOutput() {}
-	void load(FILEHANDLE inputFile);
+	void load(const char * key, const char * value);
 	void save(FILEHANDLE outputFile) {}
 	void SimulationStart();
 	void SimulationEnd();

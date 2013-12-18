@@ -14,7 +14,7 @@ class PanelEventOutput : public ThreadSafeOutput
 {
 public:
 	PanelEventOutput() {}
-	void load(FILEHANDLE inputFile);
+	void load(const char * key, const char * value);
 	void save(FILEHANDLE outputFile);
 	void threadSafeHandleEvent(Event ev);
 

@@ -13,43 +13,31 @@ DWORD WINAPI SerialThreadFunction( LPVOID lpParam )
 	return 0;
 }
 
-void SerialInput::load(FILEHANDLE inputFile)
+void SerialInput::load(const char * key, const char * value)
 {
-	//inputFile = this->readToSectionStart(inputFile,"SERIAL_INPUT");
-	if (inputFile != 0)
+	if (strcmp(key, "com_port") == 0)
 	{
-		char com [10];
-		char *line;
-		while (oapiReadScenario_nextline(inputFile,line))
-		{
-			if (line[0] != ';')
-			{
-				if (sscanf(line,"COM_PORT = %s", com) == 1)
-				{
-					serial = Serial(com);
-					serial.WriteData("f",1);
+		serial = Serial((char *)value);
+		serial.WriteData("f",1);
 					
-					//make the argument for our function to access
-					SerialInput * thisInput = this;
-					//do windows threading
-					HANDLE hThread = CreateThread( 
-						NULL,                   // default security attributes
-						NULL,                      // use default stack size  
-						SerialThreadFunction,       // thread function name
-						thisInput,          // argument to thread function 
-						NULL,                      // use default creation flags 
-						NULL);   // returns nothing
+		//make the argument for our function to access
+		SerialInput * thisInput = this;
+		//do windows threading
+		HANDLE hThread = CreateThread( 
+			NULL,                   // default security attributes
+			NULL,                      // use default stack size  
+			SerialThreadFunction,       // thread function name
+			thisInput,          // argument to thread function 
+			NULL,                      // use default creation flags 
+			NULL);   // returns nothing
 
-					//detach the thread
-					CloseHandle(hThread);
-				}
-				if (sscanf(line,"FORMAT_STRING = %s", formatString) == 1)
-				{}
-			}
-		}
-
+		//detach the thread
+		CloseHandle(hThread);
 	}
-
+	else if (strcmp(key, "format_string") == 0)
+	{
+		strcpy(formatString, value);
+	}
 }
 
 

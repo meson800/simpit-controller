@@ -3,6 +3,7 @@
 
 #include <OrbiterAPI.h>
 #include <Orbitersdk.h>
+#include <string>
 
 #include "IO.h"
 

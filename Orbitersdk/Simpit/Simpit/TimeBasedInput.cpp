@@ -1,43 +1,44 @@
 #include "TimeBasedInput.h"
-void TimeBasedInput::load(FILEHANDLE inputFile)
+void TimeBasedInput::load(const char * key, const char * value)
 {
-	char *line;
-	while (oapiReadScenario_nextline(inputFile,line))
+	int eventId, eventState;
+	float dt;
+			
+	//read a sim start type of switch, type 0
+
+	//format
+	//SIMULATION_START eventId eventState
+	if (strcmp(key, "simulation_start") == 0)
 	{
-		if (line[0] != ';')
+		if (sscanf(value, " %i %i", &eventId, &eventState))
 		{
-			int eventId, eventState;
-			float dt;
-			
-			//read a sim start type of switch, type 0
-
-			//format
-			//SIMULATION_START eventId eventState
-			if (sscanf(line,"SIMULATION_START %i %i",&eventId, &eventState) == 2)
-			{
-				dt = 0;
-				inputs.push_back(TimeSpec(0,dt,Event(eventId,eventState)));
-			}
-
-			//type 1
-			//format
-			//REAL_TIME dt eventId eventState
-			if (sscanf(line,"REAL_TIME %f %i %i",&dt, &eventId, &eventState) == 3)
-			{
-				inputs.push_back(TimeSpec(1,dt,Event(eventId,eventState)));
-			}
-
-			//type 2
-			//format
-			//SIM_TIME dt eventId eventState
-			if (sscanf(line,"SIM_TIME %f %i %i",&dt, &eventId, &eventState) == 3)
-			{
-				inputs.push_back(TimeSpec(2,dt,Event(eventId,eventState)));
-			}
-			
+			dt = 0;
+			inputs.push_back(TimeSpec(0, dt, Event(eventId, eventState)));
 		}
-		
 	}
+
+	//type 1
+	//format
+	//REAL_TIME dt eventId eventState
+	if (strcmp(key, "real_time") == 0)
+	{
+		if (sscanf(value, " %f %i %i", &dt, &eventId, &eventState) == 3)
+		{
+			inputs.push_back(TimeSpec(1, dt, Event(eventId, eventState)));
+		}
+	}
+
+	//type 2
+	//format
+	//SIM_TIME dt eventId eventState
+	if (strcmp(key, "sim_time") == 0)
+	{
+		if (sscanf(value, " %f %i %i", &dt, &eventId, &eventState) == 3)
+		{
+			inputs.push_back(TimeSpec(2, dt, Event(eventId, eventState)));
+		}
+	}
+
 }
 
 void TimeBasedInput::SimulationStart()

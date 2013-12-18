@@ -24,7 +24,7 @@ void ModuleFactory::createModules(vector<IO *>& moduleVector, HINSTANCE hDLL)
 				moduleVector.push_back(new TimeBasedInput());
 
 			//now give it the file to load
-			moduleVector.back()->load(configFile);
+			loadModuleFromFile(moduleVector.back(), configFile);
 		}
 	}
 }
@@ -42,8 +42,12 @@ void ModuleFactory::loadModuleFromFile(IO * module, FILEHANDLE configFile)
 		{
 			//read the key and the value, then call the load on the module
 			sscanf(line, "%255s = %255[^]", key, value);
+			string s_key = key;
+			std::transform(s_key.begin(), s_key.end(), s_key.begin(), ::tolower);
+			//to lowercase
+
 			//send the key and value to the module!
-			//module->load(key, value);
+			module->load(s_key.c_str(), value);
 		}
 	}
 }

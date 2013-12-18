@@ -183,6 +183,7 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="info.txt" />
+    <None Include="ModuleList.txt" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ExtMFD.rc">

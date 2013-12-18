@@ -1,6 +1,6 @@
 #include "PanelClickRecorderOutput.h"
 
-void PanelClickRecorderOutput::load(FILEHANDLE inputFile)
+void PanelClickRecorderOutput::load(const char * key, const char * value)
 {
 	//inputFile = this->readToSectionStart(inputFile, "PANEL_CLICK_RECORDER");
 
@@ -10,47 +10,47 @@ void PanelClickRecorderOutput::load(FILEHANDLE inputFile)
 	strcpy(logName,"Modules\\Plugin\\SimpitRecorderLog.log");
 	strcpy(recordLogName,"EventRecorderOutput.log");
 
-	char *line;
-	while (oapiReadScenario_nextline(inputFile,line))
+	//now see if it is our vessel name
+	if (strcmp(key, "vessel_name") == 0)
+		sscanf(value,"%s", vesselName);
+
+	//record the starting record id if it is there
+	if (strcmp(key, "starting_record_id") == 0)
+		sscanf(value,"%i",&currentUserDefId);
+
+	//see if recording should be enabled
+	if (strcmp(key, "auto_record") == 0)
 	{
-		if (line[0] != ';')
+		int test_int;
+		sscanf(value, "%i", &test_int);
+		if (test_int == 1)
 		{
-			//now see if it is our vessel name
-			sscanf(line,"VESSEL_NAME = %s", vesselName);
-
-			//record the starting record id if it is there
-			sscanf(line,"STARTING_RECORD_ID = %i",&currentUserDefId);
-
-			//see if recording should be enabled
-			if (sscanf(line,"AUTO_RECORD = 1") == 1)
-			{
-				record = true;
-			}
-
-			//read log file info, if they want to change the defaults
-			sscanf(line,"EVENT_LOG_NAME = \"%254[^\"]\"",logName);
-
-			//print a starter so we can see where a session begins
-			FILE * logFile = fopen(logName,"a");
-			if (logFile != NULL)
-			{
-				fprintf(logFile,"Event logging started\n");
-				fclose(logFile);
-			}
-
-			//read record output info
-			sscanf(line,"RECORDING_LOG_NAME = \"%254[^\"]\"",recordLogName);
-
-
-			FILE * recordFile = fopen(recordLogName,"a");
-			if (recordFile != NULL)
-			{
-				fprintf(recordFile,"Recording started\n");
-				fclose(recordFile);
-			}
-
-
+			record = true;
 		}
+	}
+
+	//read log file info, if they want to change the defaults
+	if (strcmp(key, "event_log_name") == 0)
+		sscanf(value,"\"%254[^\"]\"",logName);
+
+	//print a starter so we can see where a session begins
+	FILE * logFile = fopen(logName,"a");
+	if (logFile != NULL)
+	{
+		fprintf(logFile,"Event logging started\n");
+		fclose(logFile);
+	}
+
+	//read record output info
+	if (strcmp(key, "recording_log_name") == 0)
+		sscanf(value,"\"%254[^\"]\"",recordLogName);
+
+
+	FILE * recordFile = fopen(recordLogName,"a");
+	if (recordFile != NULL)
+	{
+		fprintf(recordFile,"Recording started\n");
+		fclose(recordFile);
 	}
 }
 

@@ -128,6 +128,7 @@
     <None Include="Bitmaps\bt_stick.bmp" />
     <None Include="diagram.cd" />
     <None Include="info.txt" />
+    <None Include="ModuleList.txt" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ExtMFD.rc">

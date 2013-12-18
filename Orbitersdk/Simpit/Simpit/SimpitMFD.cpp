@@ -12,38 +12,38 @@ SimpitMFD::~SimpitMFD()
 	delete moduleHandle;
 }
 
-void SimpitMFD::load(FILEHANDLE inputFile)
+void SimpitMFD::load(const char * key, const char * value)
 {
-	char *line;
-	while (oapiReadScenario_nextline(inputFile,line))
+	if (strcmp(key, "position") == 0)
 	{
-		if (line[0] != ';')
+		int left, top, right, bottom;
+		if (sscanf(value, "%i %i %i %i", &left, &top, &right, &bottom) == 4)
 		{
-			int left,top,right,bottom;
-			if (sscanf(line,"POSITION %i %i %i %i",&left,&top,&right,&bottom) == 4)
-			{
-				mfdPos.left = left;
-				mfdPos.top = top;
-				mfdPos.right = right;
-				mfdPos.bottom = bottom;
-			}
-			if (sscanf(line,"REGION %i %i %i %i",&left,&top,&right,&bottom) == 4)
-			{
-				hasRegion = true;
-				mfdRegion[0] = left;
-				mfdRegion[1] = top;
-				mfdRegion[2] = right;
-				mfdRegion[3] = bottom;
-			}
-
-			int eventId,eventState,buttonId;
-			if (sscanf(line,"%i %i %i",&eventId,&eventState,&buttonId) == 3)
-			{
-				buttonMapping[new Event(eventId,eventState)] = buttonId ;
-			}
-			
+			mfdPos.left = left;
+			mfdPos.top = top;
+			mfdPos.right = right;
+			mfdPos.bottom = bottom;
 		}
-		
+	}
+	else if (strcmp(key, "region") == 0)
+	{
+		int left, top, right, bottom;
+		if (sscanf(value, "%i %i %i %i", &left, &top, &right, &bottom) == 4)
+		{
+			hasRegion = true;
+			mfdRegion[0] = left;
+			mfdRegion[1] = top;
+			mfdRegion[2] = right;
+			mfdRegion[3] = bottom;
+		}
+	}
+	else if (strcmp(key, "event") == 0)
+	{
+		int eventId, eventState, buttonId;
+		if (sscanf(value, "%i %i %i", &eventId, &eventState, &buttonId) == 3)
+		{
+			buttonMapping[new Event(eventId, eventState)] = buttonId;
+		}
 	}
 }
 

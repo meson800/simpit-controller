@@ -17,14 +17,14 @@ class SerialInput : public Input
 public:
 	SerialInput() : serial("COM3") {}
 	~SerialInput();
-	void load (FILEHANDLE inputFile);
+	void load (const char * key, const char * value);
 	void save(FILEHANDLE outputFile) {}
 	void readSerialThread();
 
 private:
 	Serial serial;
 	std::string buffer;
-	char formatString [255];
+	char formatString [256];
 	bool disconnect;
 };
 

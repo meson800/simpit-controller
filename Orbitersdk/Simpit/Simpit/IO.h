@@ -11,7 +11,7 @@ class IO
 {
 public:
 	IO(){}
-	void virtual load(FILEHANDLE inputFile) = 0;
+	void virtual load(const char * key, const char * value) = 0;
 	void virtual save(FILEHANDLE outputFile){}
 	FILEHANDLE readToSectionStart(FILEHANDLE file, std::string name);
 	void virtual handleEvent(Event ev) {}

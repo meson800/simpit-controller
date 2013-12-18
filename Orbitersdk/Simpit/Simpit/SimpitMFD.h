@@ -18,7 +18,7 @@ class SimpitMFD : public Output
 public:
 	SimpitMFD(HINSTANCE hDLL);
 	~SimpitMFD();
-	void load(FILEHANDLE inputFile);
+	void load(const char * key, const char * value);
 	void save(FILEHANDLE outputFile) {}
 	void handleEvent(Event ev);
 	void SimulationStart();

@@ -1,21 +1,16 @@
 #include "ExternalOutput.h"
-void ExternalOutput::load(FILEHANDLE inputFile)
+void ExternalOutput::load(const char * key, const char * value)
 {
-	char *line;
-	while (oapiReadScenario_nextline(inputFile,line))
+	if (strcmp(key, "output") == 0)
 	{
-		if (line[0] != ';')
+		Event thisEvent;
+		programInfo thisInfo;
+		if (sscanf(value, "%i,%i,\"%254[^\"]\",\"%254[^\"]\"", &(thisEvent.id), &(thisEvent.state), &(thisInfo.name), &(thisInfo.args)) == 4)
 		{
-			Event thisEvent;
-			programInfo thisInfo;
-			if (sscanf(line,"%i,%i,\"%254[^\"]\",\"%254[^\"]\"",&(thisEvent.id),&(thisEvent.state),&(thisInfo.name),&(thisInfo.args)) == 4)
-			{
-				eventMapping[new Event(thisEvent)] = thisInfo;
-			}
-			
+			eventMapping[new Event(thisEvent)] = thisInfo;
 		}
-		
 	}
+
 }
 
 void ExternalOutput::handleEvent(Event ev)

@@ -23,7 +23,7 @@ class TimeBasedInput : public Input
 {
 public:
 	TimeBasedInput () {}
-	void load (FILEHANDLE inputFile);
+	void load (const char * key, const char * value);
 	void SimulationStart();
 	void PostStep(double simt, double simdt, double mjd);
 
