@@ -13,6 +13,7 @@
 #include "ExternalOutput.h"
 #include "PanelClickRecorderOutput.h"
 #include "PanelEventOutput.h"
+#include "KeyOutput.h"
 
 class ModuleFactory
 {
