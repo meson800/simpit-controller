@@ -48,6 +48,13 @@ void KeyOutput::handleEvent(Event ev)
 
 void KeyOutput::SendStringAuto(const char * string)
 {
+	//first, do some haacky hacks if they want to pause/unpause, as orbiter REALLY doesn't like ^p
+	if (strcmp(string, "^p") == 0)
+	{
+		oapiSetPause(!oapiGetPause());
+		return;
+	}
+
 	//first send keydown
 	SendString(string, 0);
 	//then send keyup
@@ -79,11 +86,12 @@ void KeyOutput::SendString(const char * string, DWORD dwFlags)
 		{
 			case '+':
 				//shift
-				virtual_keycode = 0x10;
+				virtual_keycode = VK_SHIFT;
 				break;
 			case '^':
 				//control
-				virtual_keycode = 0x11;
+				virtual_keycode = VK_CONTROL;
+				break;
 			case '!':
 				//alt
 				virtual_keycode = 0x12;
@@ -91,9 +99,11 @@ void KeyOutput::SendString(const char * string, DWORD dwFlags)
 			case '#':
 				//windows key
 				virtual_keycode = 0x5B;
+				break;
 			default:
 				//use VkKeyScan to convert keycode
 				virtual_keycode = VkKeyScan(string[i]);
+				break;
 		}
 		
 		//send keystroke
