@@ -99,6 +99,9 @@
     <ClCompile Include="KeyOutput.cpp">
       <Filter>Source Files\Outputs</Filter>
     </ClCompile>
+    <ClCompile Include="StateSaver.cpp">
+      <Filter>Source Files\Outputs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpitManager.h">
@@ -180,6 +183,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KeyOutput.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="StateSaver.h">
       <Filter>Header Files\Outputs</Filter>
     </ClInclude>
   </ItemGroup>
