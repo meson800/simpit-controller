@@ -15,6 +15,7 @@ public:
 	void virtual save(FILEHANDLE outputFile){}
 	FILEHANDLE readToSectionStart(FILEHANDLE file, std::string name);
 	void virtual handleEvent(Event ev) {}
+	bool virtual handleEventBlocking(Event ev) { handleEvent(ev); return false; }
 	void virtual SimulationStart() {}
 	void virtual SimulationEnd() {}
 	void virtual PreStep(double simt, double simdt, double mjd) {}
