@@ -18,3 +18,25 @@ void StateSaver::load(const char * key, const char * value)
 			eventToNameMapping[map_key] = std::string(map_value);
 	}
 }
+
+void StateSaver::loadScenarioState(FILEHANDLE scenario)
+{
+	char * line;
+	while (oapiReadScenario_nextline(scenario, line))
+	{
+		//load the recorded event
+		int ev_id, ev_state;
+		if (sscanf(line, "%i %i", &ev_id, &ev_state) == 2)
+			recordedEvents[ev_id] = ev_state;
+	}
+}
+
+void StateSaver::saveScenarioState(FILEHANDLE scenario)
+{
+	for (std::map<int, int>::iterator it = currentEvents.begin(); it != currentEvents.end(); it++)
+	{
+		char lineToWrite[100];
+		sprintf(lineToWrite, "%i %i", it->first, it->second);
+		oapiWriteLine(scenario, lineToWrite);
+	}
+}

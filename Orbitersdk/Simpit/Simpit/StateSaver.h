@@ -6,6 +6,7 @@
 #include <map>
 #include <string>
 
+#include "OrbiterAPI.h"
 #include "IO.h"
 
 class StateSaver : public IO
@@ -19,6 +20,8 @@ public:
 
 private:
 	void createListbox();
+	bool inRange(Event ev);
+
 	std::vector < std::pair<int, int>> ranges;
 	std::map<int, int> recordedEvents;
 	std::map<int, int> currentEvents;
