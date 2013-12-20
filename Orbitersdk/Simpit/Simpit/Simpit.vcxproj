@@ -93,6 +93,7 @@
     <ClCompile Include="SimpitManager.cpp" />
     <ClCompile Include="SimpitMFD.cpp" />
     <ClCompile Include="SimpitObserver.cpp" />
+    <ClCompile Include="StateObserver.cpp" />
     <ClCompile Include="StateSaver.cpp" />
     <ClCompile Include="ThreadSafeOutput.cpp" />
     <ClCompile Include="TimeBasedInput.cpp" />
@@ -122,6 +123,7 @@
     <ClInclude Include="SimpitManager.h" />
     <ClInclude Include="SimpitMFD.h" />
     <ClInclude Include="SimpitObserver.h" />
+    <ClInclude Include="StateObserver.h" />
     <ClInclude Include="StateSaver.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="ThreadSafeOutput.h" />

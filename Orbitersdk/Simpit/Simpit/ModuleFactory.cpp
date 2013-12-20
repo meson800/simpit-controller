@@ -24,6 +24,12 @@ void ModuleFactory::createModules(vector<IO *>& moduleVector, HINSTANCE hDLL)
 				moduleVector.push_back(new TimeBasedInput());
 			else if (strcmp(moduleName, "BEGIN KEY_OUTPUT") == 0)
 				moduleVector.push_back(new KeyOutput());
+			else if (strcmp(moduleName, "BEGIN STATE_SAVER") == 0)
+			{
+				StateSaver * module = new StateSaver(hDLL);
+				moduleVector.push_back(module);
+				StateObserver::setUpManager(module);
+			}
 
 			//now give it the file to load
 			loadModuleFromFile(moduleVector.back(), configFile);

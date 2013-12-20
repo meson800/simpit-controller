@@ -6,10 +6,12 @@
 #include <map>
 #include <string>
 
+#include "resource.h"
 #include "OrbiterAPI.h"
 #include "IO.h"
 
 typedef std::map<int, int>::iterator eventMapIterator;
+typedef std::map<int, std::pair<int, int>>::iterator eventPairMapIterator;
 
 class StateSaver : public IO
 {
@@ -24,10 +26,11 @@ public:
 
 private:
 	void createListbox();
+	void updateDialog();
 	bool inRange(Event ev);
 
-	std::vector < std::pair<int, int>> ranges;
-	std::map<int, int> recordedEvents;
+	std::vector <std::pair<int, int>> ranges;
+	std::map<int, std::pair<int, int>> recordedEvents;
 	std::map<int, int> currentEvents;
 	std::map<int, std::string> eventToNameMapping;
 

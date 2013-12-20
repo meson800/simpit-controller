@@ -5,6 +5,8 @@
 #include <Orbitersdk.h>
 #include <string>
 
+#include "StateObserver.h"
+
 #include "IO.h"
 
 #include "SerialInput.h"
@@ -14,6 +16,7 @@
 #include "PanelClickRecorderOutput.h"
 #include "PanelEventOutput.h"
 #include "KeyOutput.h"
+#include "StateSaver.h"
 
 class ModuleFactory
 {
