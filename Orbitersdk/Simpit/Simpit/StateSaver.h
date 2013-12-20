@@ -9,14 +9,18 @@
 #include "OrbiterAPI.h"
 #include "IO.h"
 
+typedef std::map<int, int>::iterator eventMapIterator;
+
 class StateSaver : public IO
 {
 public:
-	StateSaver() {}
+	StateSaver(HINSTANCE _hDLL) {hDLL = _hDLL; }
 	void load(const char * key, const char * value);
 	void loadScenarioState(FILEHANDLE scenario);
 	void saveScenarioState(FILEHANDLE scenario);
 	bool handleEventBlocking(Event ev);
+
+	static INT_PTR CALLBACK DlgProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 
 private:
 	void createListbox();
@@ -26,6 +30,11 @@ private:
 	std::map<int, int> recordedEvents;
 	std::map<int, int> currentEvents;
 	std::map<int, std::string> eventToNameMapping;
+
+	HWND listbox;
+	HWND hDlg;
+
+	static HINSTANCE hDLL;
 
 };
 

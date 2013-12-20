@@ -1,5 +1,32 @@
 #include "StateSaver.h"
 
+HINSTANCE StateSaver::hDLL = 0;
+
+INT_PTR CALLBACK StateSaver::DlgProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
+{
+	switch (Msg)
+	{
+	case WM_INITDIALOG:
+
+		//get size of window, and create list box to fill it
+		RECT rect;
+		if (GetWindowRect(hWnd, &rect))
+		{
+			int width = rect.right - rect.left;
+			int height = rect.bottom - rect.top;
+			HWND hListBox = CreateWindowEx(WS_EX_CLIENTEDGE
+				, "LISTBOX", NULL
+				, WS_CHILD | WS_VISIBLE | ES_AUTOVSCROLL
+				, 7, 35, width - 7, height - 35
+				, hWnd, NULL, hDLL, NULL);
+			lParam = (LPARAM)hListBox;
+		}
+		return true;
+	default:
+		return DefDlgProc(hWnd, Msg, wParam, lParam);
+	}
+}
+
 void StateSaver::load(const char * key, const char * value)
 {
 	//load ranges
@@ -29,14 +56,26 @@ void StateSaver::loadScenarioState(FILEHANDLE scenario)
 		if (sscanf(line, "%i %i", &ev_id, &ev_state) == 2)
 			recordedEvents[ev_id] = ev_state;
 	}
+
+
+	createListbox();
+	listbox = (HWND)oapiGetDialogContext(hDlg);
+	//add items to listbox
+
 }
 
 void StateSaver::saveScenarioState(FILEHANDLE scenario)
 {
-	for (std::map<int, int>::iterator it = currentEvents.begin(); it != currentEvents.end(); it++)
+	for (eventMapIterator it = currentEvents.begin(); it != currentEvents.end(); it++)
 	{
 		char lineToWrite[100];
 		sprintf(lineToWrite, "%i %i", it->first, it->second);
 		oapiWriteLine(scenario, lineToWrite);
 	}
+}
+
+void StateSaver::createListbox()
+{
+	hDlg = oapiOpenDialog(hDLL, 0, &(StateSaver::DlgProc), (void *)this);
+
 }
