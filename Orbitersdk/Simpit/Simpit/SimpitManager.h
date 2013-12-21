@@ -11,6 +11,7 @@ using namespace std;
 #include "OrbiterAPI.h"
 #include "Event.h"
 #include "ModuleFactory.h"
+#include "Log.h"
 
 //include modules
 
