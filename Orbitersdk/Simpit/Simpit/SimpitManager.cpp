@@ -10,7 +10,8 @@ void SimpitManager::handleEvent(Event ev)
 {
 	for (unsigned int i = 0; i < modules.size(); i++)
 	{
-		modules[i]->handleEvent(ev);
+		if (modules[i]->handleEventBlocking(ev) == true)
+			return;
 	}
 }
 void SimpitManager::clbkSimulationStart(RenderMode mode)

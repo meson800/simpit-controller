@@ -27,7 +27,7 @@ void ModuleFactory::createModules(vector<IO *>& moduleVector, HINSTANCE hDLL)
 			else if (strcmp(moduleName, "BEGIN STATE_SAVER") == 0)
 			{
 				StateSaver * module = new StateSaver(hDLL);
-				moduleVector.push_back(module);
+				moduleVector.insert(moduleVector.begin(),module);
 				StateObserver::setUpManager(module);
 			}
 
