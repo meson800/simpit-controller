@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Outputs\MFD">
       <UniqueIdentifier>{4f4faab4-fb4f-4b7f-aa15-266c837939ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{90236353-1639-4d2f-be57-5286e0e0aee8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -103,7 +106,10 @@
       <Filter>Source Files\Outputs</Filter>
     </ClCompile>
     <ClCompile Include="StateObserver.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Source Files\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +198,9 @@
       <Filter>Header Files\Outputs</Filter>
     </ClInclude>
     <ClInclude Include="StateObserver.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
