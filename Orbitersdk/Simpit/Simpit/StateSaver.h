@@ -9,6 +9,7 @@
 #include <map>
 #include <string>
 
+#include "Log.h"
 #include "resource.h"
 #include "OrbiterAPI.h"
 #include "IO.h"

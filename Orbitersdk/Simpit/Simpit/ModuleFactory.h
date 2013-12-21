@@ -10,6 +10,8 @@
 
 #include "StateObserver.h"
 
+#include "Log.h"
+
 #include "IO.h"
 
 #include "SerialInput.h"

@@ -46,7 +46,7 @@ void InitMFD(HINSTANCE hDLL)
 	RegisterClass (&wndClass);
 }
 
-DLLCLBK void ExitModule (HINSTANCE hDLL)
+void ShutdownMFD (HINSTANCE hDLL)
 {
 	// Unregister window classes
 	UnregisterClass ("ExtMFD_Display", g_hInst);

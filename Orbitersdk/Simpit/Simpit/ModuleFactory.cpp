@@ -14,21 +14,43 @@ void ModuleFactory::createModules(vector<IO *>& moduleVector, HINSTANCE hDLL)
 		if (strcmp(moduleName, "") != 0)
 		{
 			if (strcmp(moduleName, "BEGIN PANEL_EVENT_OUTPUT") == 0)
+			{
+				Log::println("[ModuleFactory]Creating PanelEventOutput");
 				moduleVector.push_back(new PanelEventOutput());
+			}
 			else if (strcmp(moduleName, "BEGIN SERIAL_INPUT") == 0)
+			{
+				Log::println("[ModuleFactory]Creating SerialInput");
 				moduleVector.push_back(new SerialInput());
+			}
 			else if (strcmp(moduleName, "BEGIN PANEL_CLICK_RECORDER") == 0)
+			{
+				Log::println("[ModuleFactory]Creating PanelClickRecorder");
 				moduleVector.push_back(new PanelClickRecorderOutput());
+			}
 			else if (strcmp(moduleName, "BEGIN SIMPIT_MFD") == 0)
+			{
+				Log::println("[ModuleFactory]Creating SimpitMFD");
 				moduleVector.push_back(new SimpitMFD(hDLL));
+			}
 			else if (strcmp(moduleName, "BEGIN EXTERNAL_OUTPUT") == 0)
+			{
+				Log::println("[ModuleFactory]Creating ExternalOutput");
 				moduleVector.push_back(new ExternalOutput());
+			}
 			else if (strcmp(moduleName, "BEGIN TIME_BASED_INPUT") == 0)
+			{
+				Log::println("[ModuleFactory]Creating TimeBasedInput");
 				moduleVector.push_back(new TimeBasedInput());
+			}
 			else if (strcmp(moduleName, "BEGIN KEY_OUTPUT") == 0)
+			{
+				Log::println("[ModuleFactory]Creating KeyOutput");
 				moduleVector.push_back(new KeyOutput());
+			}
 			else if (strcmp(moduleName, "BEGIN STATE_SAVER") == 0)
 			{
+				Log::println("[ModuleFactory]Creating StateSaver");
 				StateSaver * module = new StateSaver(hDLL);
 				moduleVector.insert(moduleVector.begin(),module);
 				StateObserver::setUpManager(module);

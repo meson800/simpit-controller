@@ -11,6 +11,7 @@ SimpitManager::SimpitManager(HINSTANCE hDLL) : Module(hDLL)
 
 void SimpitManager::handleEvent(Event ev)
 {
+	fprintf(Log::returnLogHandle(), "Captured event:id=%i\tstate=%i\n",&(ev.id), &(ev.state));
 	for (unsigned int i = 0; i < modules.size(); i++)
 	{
 		if (modules[i]->handleEventBlocking(ev) == true)
@@ -19,6 +20,7 @@ void SimpitManager::handleEvent(Event ev)
 }
 void SimpitManager::clbkSimulationStart(RenderMode mode)
 {
+	Log::println("*Simulation Start");
 	for (unsigned int i = 0; i < modules.size(); i++)
 	{
 		modules[i]->SimulationStart();
@@ -33,6 +35,7 @@ void SimpitManager::clbkFocusChanged(OBJHANDLE old_focus, OBJHANDLE new_focus)
 }
 void SimpitManager::clbkSimulationEnd(RenderMode mode)
 {
+	Log::println("*Simulation End");
 	for (unsigned int i = 0; i < modules.size(); i++)
 	{
 		modules[i]->SimulationEnd();

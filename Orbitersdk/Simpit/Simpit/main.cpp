@@ -9,7 +9,7 @@
 
 #include <Windows.h>
 
-
+#include "Log.h"
 #include "MFD_Stuff.h"
 HINSTANCE hDLL;
 
@@ -19,6 +19,8 @@ HINSTANCE hDLL;
 DLLCLBK void InitModule (HINSTANCE hModule)
 {
 	 
+	//start logging
+	Log::initLogging();
 
 	HINSTANCE hDLL = hModule;
 	g_hInst = hDLL; // remember the instance handle
@@ -32,5 +34,14 @@ DLLCLBK void InitModule (HINSTANCE hModule)
 	//register module
 	oapiRegisterModule(manager);
 
+}
+
+DLLCLBK void ExitModule(HINSTANCE hModule)
+{
+	//shutdown logging
+	Log::shutdownLogging();
+
+	//shutdown the MFD stuff
+	ShutdownMFD(hModule);
 }
 
