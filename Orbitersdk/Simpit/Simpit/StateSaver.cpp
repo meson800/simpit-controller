@@ -45,6 +45,8 @@ bool StateSaver::handleEventBlocking(Event ev)
 	{
 		if (ev.id > ranges[i].first && ev.id < ranges[i].second)
 		{
+			fprintf(Log::returnLogHandle(), "[StateSaver]-Handled and Blocked event, id=%i\tstate=%i\n", 
+				&(ev.id), &(ev.state));
 			//record that sucker!
 			currentEvents[ev.id] = ev.state;
 			//see if it matches one of our recorded events
