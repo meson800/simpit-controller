@@ -6,10 +6,12 @@ void Log::initLogging()
 {
 	if (logHandle == 0)
 		fopen("simpit_controller.log", "w");
+	println("***Simpit Controller Log");
 }
 
 void Log::shutdownLogging()
 {
+	println("***Logging stopped");
 	if (logHandle != 0)
 		fclose(logHandle);
 	logHandle = 0;
