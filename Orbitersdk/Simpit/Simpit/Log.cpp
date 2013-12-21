@@ -5,7 +5,7 @@ FILE * Log::logHandle = 0;
 void Log::initLogging()
 {
 	if (logHandle == 0)
-		fopen("simpit_controller.log", "w");
+		logHandle = fopen("simpit_controller.log", "w");
 	println("***Simpit Controller Log");
 }
 
