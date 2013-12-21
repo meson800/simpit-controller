@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone
+//The MIT License - See ../../../LICENSE for more info
+
 #ifndef SIMPIT_OBSERVER
 #define SIMPIT_OBSERVER
 

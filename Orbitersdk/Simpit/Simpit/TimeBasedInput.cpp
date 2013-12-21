@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone
+//The MIT License - See ../../../LICENSE for more info
+
 #include "TimeBasedInput.h"
 void TimeBasedInput::load(const char * key, const char * value)
 {

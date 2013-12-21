@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone
+//The MIT License - See ../../../LICENSE for more info
+
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by ExtMFD.rc

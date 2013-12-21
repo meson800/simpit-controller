@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone
+//The MIT License - See ../../../LICENSE for more info
+
 #include "KeyOutput.h"
 
 void KeyOutput::load(const char * key, const char * value)

@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone
+//The MIT License - See ../../../LICENSE for more info
+
 #ifndef SIMPIT_IO
 #define SIMPIT_IO
 #include "OrbiterAPI.h"

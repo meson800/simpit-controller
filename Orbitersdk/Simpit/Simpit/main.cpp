@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone
+//The MIT License - See ../../../LICENSE for more info
+
 #define STRICT 1
 #define ORBITER_MODULE
 #include "Orbitersdk.h"

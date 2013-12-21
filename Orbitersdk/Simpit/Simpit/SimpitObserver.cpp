@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone
+//The MIT License - See ../../../LICENSE for more info
+
 #include "SimpitObserver.h"
 
 //init to NULL so we know if it is good or not
