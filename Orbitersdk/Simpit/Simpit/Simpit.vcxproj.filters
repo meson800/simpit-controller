@@ -134,9 +134,6 @@
     <ClInclude Include="PanelClickRecorderOutput.h">
       <Filter>Header Files\Outputs</Filter>
     </ClInclude>
-    <ClInclude Include="HookClass.h">
-      <Filter>Header Files\Hooking</Filter>
-    </ClInclude>
     <ClInclude Include="HookMethods.h">
       <Filter>Header Files\Hooking</Filter>
     </ClInclude>

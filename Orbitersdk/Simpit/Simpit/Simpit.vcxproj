@@ -101,7 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExternalOutput.h" />
-    <ClInclude Include="HookClass.h" />
     <ClInclude Include="HookMethods.h" />
     <ClInclude Include="HookObserver.h" />
     <ClInclude Include="KeyOutput.h" />
