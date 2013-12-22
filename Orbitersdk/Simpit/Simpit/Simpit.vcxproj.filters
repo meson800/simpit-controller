@@ -111,6 +111,9 @@
     <ClCompile Include="Log.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="MacroExpander.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpitManager.h">
@@ -198,6 +201,9 @@
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="MacroExpander.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>

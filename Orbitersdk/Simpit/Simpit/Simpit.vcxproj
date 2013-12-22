@@ -83,6 +83,7 @@
     <ClCompile Include="IO.cpp" />
     <ClCompile Include="KeyOutput.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="MacroExpander.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MFDWindow.cpp" />
     <ClCompile Include="ModuleFactory.cpp" />
@@ -106,6 +107,7 @@
     <ClInclude Include="HookObserver.h" />
     <ClInclude Include="KeyOutput.h" />
     <ClInclude Include="Log.h" />
+    <ClInclude Include="MacroExpander.h" />
     <ClInclude Include="MFDWindow.h" />
     <ClInclude Include="MFD_Stuff.h" />
     <ClInclude Include="ModuleFactory.h" />
