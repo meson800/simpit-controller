@@ -5,7 +5,9 @@
 #define EXTERNAL_OUTPUT_HEADER
 
 #include <map>
+#include <string>
 
+#include "MacroExpander.h"
 #include "Event.h"
 #include "Output.h"
 

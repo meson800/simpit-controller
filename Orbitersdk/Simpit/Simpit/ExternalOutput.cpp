@@ -29,8 +29,16 @@ void ExternalOutput::handleEvent(Event ev)
 
 		siStartupInfo.cb = sizeof(siStartupInfo);
 
-		CreateProcess(eventMapping[&ev].name,     // Application name
-                     eventMapping[&ev].args,                 // Application arguments
+		//run program name and args through MacroExpander
+		std::string name = eventMapping[&ev].name;
+		std::string args = eventMapping[&ev].args;
+
+		MacroExpander::expandString(name);
+		MacroExpander::expandString(args);
+
+
+		CreateProcess(name.c_str(),     // Application name
+                     args.c_str(),                 // Application arguments
                      0,0,FALSE,CREATE_DEFAULT_ERROR_MODE,0,0,&siStartupInfo,&piProcessInfo);
 	}
 
