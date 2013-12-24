@@ -62,18 +62,14 @@ void PanelClickRecorderOutput::load(const char * key, const char * value)
 	}
 }
 
-void PanelClickRecorderOutput::PreStep(double simt, double simdt, double mjd)
+void PanelClickRecorderOutput::SimulationStart()
 {
-	if (!hasHooked)
+	OBJHANDLE hVessel = oapiGetVesselByName((char *)vesselName.c_str());
+	if (oapiIsVessel(hVessel))
 	{
-		OBJHANDLE hVessel = oapiGetVesselByName((char *)vesselName.c_str());
-		if (oapiIsVessel(hVessel))
-		{
-			InstallVesselHook((VESSEL2 *)oapiGetVesselInterface(hVessel));
-			observer.setUpReciever(this);
+		InstallVesselHook((VESSEL2 *)oapiGetVesselInterface(hVessel));
+		observer.setUpReciever(this);
 		
-		}
-		hasHooked = true;
 	}
 }
 

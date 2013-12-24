@@ -20,11 +20,11 @@
 class PanelClickRecorderOutput : public Output
 {
 public:
-	PanelClickRecorderOutput(): hasHooked(false), record(false), currentUserDefId(0), logName("Modules\\Plugin\\SimpitRecorderLog.log"),
+	PanelClickRecorderOutput(): record(false), currentUserDefId(0), logName("Modules\\Plugin\\SimpitRecorderLog.log"),
 		recordLogName("EventRecorderOutput.log") {}
 	void load(const char * key, const char * value);
 	void save(FILEHANDLE outputFile) {}
-	void PreStep(double simt, double simdt, double mjd);
+	void SimulationStart();
 	void SimulationEnd();
 	void FocusChanged(OBJHANDLE old_focus, OBJHANDLE new_focus);
 	void handlePanelMouseEvent(int id, int ev, int mx, int my);
@@ -39,7 +39,6 @@ private:
 	std::string recordLogName;
 	std::string vesselName;
 	bool record;
-	bool hasHooked;
 	int currentUserDefId;
 };
 
