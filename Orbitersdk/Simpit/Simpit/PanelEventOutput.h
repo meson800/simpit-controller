@@ -13,6 +13,8 @@
 #include <queue>
 #include <Windows.h>
 
+typedef  std::multimap<int, PanelMouseId>::iterator switchIterator;
+
 class PanelEventOutput : public ThreadSafeOutput
 {
 public:
@@ -24,7 +26,7 @@ public:
 private:
 	//our maps which store information about virtual button-event info
 	std::map<int, std::map<int, PanelMouseEvent>> userDefinitions;
-	std::map<int, PanelMouseId> switches;
+	std::multimap<int, PanelMouseId> switches;
 
 
 

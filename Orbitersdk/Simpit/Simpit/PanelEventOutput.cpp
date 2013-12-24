@@ -31,7 +31,7 @@ void PanelEventOutput::load(const char * key, const char * value)
 	{
 		int eventId,mouseEventId,userDefNum;
 		if (sscanf(value,"%i %i %i", &eventId,&userDefNum, &mouseEventId) == 3)
-			switches[eventId] = PanelMouseId(mouseEventId,userDefNum);
+			switches.insert(std::make_pair(eventId,PanelMouseId(mouseEventId,userDefNum)));
 	}
 }
 
@@ -43,15 +43,24 @@ void PanelEventOutput::threadSafeHandleEvent(Event ev)
 	//check to see if we even have a key with the correct ID
 	if(switches.count(ev.id))
 	{
-		PanelMouseEvent toClick = userDefinitions[switches[ev.id].userDef][ev.state];
-	
-		
-		if (hSimVessel != NULL)
+		//since duplicate switches are allowed, do this
+		std::pair<switchIterator, switchIterator> range = switches.equal_range(ev.id);
+		for (range.first; range.first != range.second; range.first++)
 		{
-			//vessel exists, so create the interface
-			VESSEL2 *simVessel = (VESSEL2 *)oapiGetVesselInterface(hSimVessel);
-			//and send the event!
-			simVessel->clbkPanelMouseEvent(switches[ev.id].eventId,toClick.mouseEvent,toClick.mx,toClick.my);
+			//check to see if this definition's userDef has a state
+			if (userDefinitions[range.first->second.userDef].count(ev.state))
+			{
+				PanelMouseEvent toClick = userDefinitions[range.first->second.userDef][ev.state];
+
+
+				if (hSimVessel != NULL)
+				{
+					//vessel exists, so create the interface
+					VESSEL2 *simVessel = (VESSEL2 *)oapiGetVesselInterface(hSimVessel);
+					//and send the event!
+					simVessel->clbkPanelMouseEvent(range.first->second.eventId, toClick.mouseEvent, toClick.mx, toClick.my);
+				}
+			}
 		}
 	}
 
