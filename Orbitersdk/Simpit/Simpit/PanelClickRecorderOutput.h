@@ -6,6 +6,7 @@
 
 #include <queue>
 #include <string.h>
+#include <string>
 
 #include "HookObserver.h"
 #include "PanelMouseEvent.h"
@@ -19,10 +20,11 @@
 class PanelClickRecorderOutput : public Output
 {
 public:
-	PanelClickRecorderOutput() {}
+	PanelClickRecorderOutput(): hasHooked(false), record(false), currentUserDefId(0), logName("Modules\\Plugin\\SimpitRecorderLog.log"),
+		recordLogName("EventRecorderOutput.log") {}
 	void load(const char * key, const char * value);
 	void save(FILEHANDLE outputFile) {}
-	void SimulationStart();
+	void PreStep(double simt, double simdt, double mjd);
 	void SimulationEnd();
 	void FocusChanged(OBJHANDLE old_focus, OBJHANDLE new_focus);
 	void handlePanelMouseEvent(int id, int ev, int mx, int my);
@@ -33,10 +35,11 @@ public:
 
 private:
 	std::queue<PanelMouseEvent*> recordingQueue;
-	char logName [256];
-	char recordLogName [256];
-	char vesselName[255];
+	std::string logName;
+	std::string recordLogName;
+	std::string vesselName;
 	bool record;
+	bool hasHooked;
 	int currentUserDefId;
 };
 

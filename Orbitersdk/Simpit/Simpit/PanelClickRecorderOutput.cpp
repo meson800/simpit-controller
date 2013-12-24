@@ -6,16 +6,15 @@
 void PanelClickRecorderOutput::load(const char * key, const char * value)
 {
 	//inputFile = this->readToSectionStart(inputFile, "PANEL_CLICK_RECORDER");
-
-	//set up initial conditions
-	record = false;
-	currentUserDefId = 0;
-	strcpy(logName,"Modules\\Plugin\\SimpitRecorderLog.log");
-	strcpy(recordLogName,"EventRecorderOutput.log");
-
+	char c_vesselName [256];
+	char c_logName [256];
+	char c_recordLogName [256];
 	//now see if it is our vessel name
 	if (strcmp(key, "vessel_name") == 0)
-		sscanf(value,"%s", vesselName);
+	{
+		sscanf(value,"%s", c_vesselName);
+		vesselName = c_vesselName;
+	}
 
 	//record the starting record id if it is there
 	if (strcmp(key, "starting_record_id") == 0)
@@ -34,10 +33,13 @@ void PanelClickRecorderOutput::load(const char * key, const char * value)
 
 	//read log file info, if they want to change the defaults
 	if (strcmp(key, "event_log_name") == 0)
-		sscanf(value,"\"%254[^\"]\"",logName);
+	{
+		sscanf(value,"\"%254[^\"]\"",c_logName);
+		logName = c_logName;
+	}
 
 	//print a starter so we can see where a session begins
-	FILE * logFile = fopen(logName,"a");
+	FILE * logFile = fopen(logName.c_str(),"a");
 	if (logFile != NULL)
 	{
 		fprintf(logFile,"Event logging started\n");
@@ -46,10 +48,13 @@ void PanelClickRecorderOutput::load(const char * key, const char * value)
 
 	//read record output info
 	if (strcmp(key, "recording_log_name") == 0)
-		sscanf(value,"\"%254[^\"]\"",recordLogName);
+	{
+		sscanf(value,"\"%254[^\"]\"",c_recordLogName);
+		recordLogName = c_recordLogName;
+	}
 
 
-	FILE * recordFile = fopen(recordLogName,"a");
+	FILE * recordFile = fopen(recordLogName.c_str(),"a");
 	if (recordFile != NULL)
 	{
 		fprintf(recordFile,"Recording started\n");
@@ -57,14 +62,18 @@ void PanelClickRecorderOutput::load(const char * key, const char * value)
 	}
 }
 
-void PanelClickRecorderOutput::SimulationStart()
+void PanelClickRecorderOutput::PreStep(double simt, double simdt, double mjd)
 {
-	OBJHANDLE hVessel = oapiGetVesselByName(vesselName);
-	if (oapiIsVessel(hVessel))
+	if (!hasHooked)
 	{
-		InstallVesselHook((VESSEL2 *)oapiGetVesselInterface(hVessel));
-		observer.setUpReciever(this);
+		OBJHANDLE hVessel = oapiGetVesselByName((char *)vesselName.c_str());
+		if (oapiIsVessel(hVessel))
+		{
+			InstallVesselHook((VESSEL2 *)oapiGetVesselInterface(hVessel));
+			observer.setUpReciever(this);
 		
+		}
+		hasHooked = true;
 	}
 }
 
@@ -76,7 +85,7 @@ void PanelClickRecorderOutput::handlePanelMouseEvent(int id, int ev, int mx, int
 	}
 		
 	//log it
-	FILE * logFile = fopen(logName,"a");
+	FILE * logFile = fopen(logName.c_str(),"a");
 	if (logFile != NULL)
 	{
 		fprintf(logFile,"%d,%d,%d,%d\n",id,ev,mx,my);
@@ -88,9 +97,9 @@ void PanelClickRecorderOutput::handlePanelMouseEvent(int id, int ev, int mx, int
 void PanelClickRecorderOutput::handleEvent(Event ev)
 {
 	//pop from queue, write to file
-	if (record && !recordingQueue.size())
+	if (record && recordingQueue.size() > 0)
 	{
-		FILE * recordFile = fopen(recordLogName,"a");
+		FILE * recordFile = fopen(recordLogName.c_str(),"a");
 		if (recordFile != NULL)
 		{
 			//we have to output two things, first a user definition.
@@ -110,11 +119,11 @@ void PanelClickRecorderOutput::handleEvent(Event ev)
 			PanelMouseEvent * mouseEvent = recordingQueue.front();
 
 			//first set up the user definition
-			fprintf(recordFile,"%i %i %i %i %i\n",currentUserDefId, ev.state, mouseEvent->mx,
+			fprintf(recordFile,"user_def = %i %i %i %i %i\n",currentUserDefId, ev.state, mouseEvent->mx,
 				mouseEvent->my, mouseEvent->mouseEvent);
 
 			//now print out the event mapping
-			fprintf(recordFile,"%i %i %i\n", ev.id, currentUserDefId, mouseEvent->id);
+			fprintf(recordFile,"event = %i %i %i\n", ev.id, currentUserDefId, mouseEvent->id);
 			fclose(recordFile);
 
 			//increment currentUserDefId so we don't overwrite it and clean up

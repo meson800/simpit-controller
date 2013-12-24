@@ -6,10 +6,12 @@ StateSaver * StateObserver::saver = 0;
 
 void opcLoadState(FILEHANDLE scn)
 {
-	StateObserver::saver->loadScenarioState(scn);
+	if (StateObserver::saver != 0)
+		StateObserver::saver->loadScenarioState(scn);
 }
 
 void opcSaveState(FILEHANDLE scn)
 {
-	StateObserver::saver->saveScenarioState(scn);
+	if (StateObserver::saver != 0)
+		StateObserver::saver->saveScenarioState(scn);
 }

@@ -18,16 +18,21 @@ DWORD WINAPI SerialThreadFunction( LPVOID lpParam );
 class SerialInput : public Input
 {
 public:
-	SerialInput() : serial("COM3") {}
+	SerialInput() : stopSerial(false)  {InitializeCriticalSection(&critSection);}
 	~SerialInput();
 	void load (const char * key, const char * value);
+	void SimulationStart();
+	void SimulationEnd();
 	void save(FILEHANDLE outputFile) {}
 	void readSerialThread();
 
 private:
-	Serial serial;
+	CRITICAL_SECTION critSection;
+	bool stopSerial;
+	Serial * serial;
 	std::string buffer;
 	char formatString [256];
+	char comPort [256];
 	bool disconnect;
 };
 

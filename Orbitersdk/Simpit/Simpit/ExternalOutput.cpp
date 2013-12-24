@@ -36,9 +36,8 @@ void ExternalOutput::handleEvent(Event ev)
 		MacroExpander::expandString(name);
 		MacroExpander::expandString(args);
 
-
-		CreateProcess(name.c_str(),     // Application name
-                     args.c_str(),                 // Application arguments
+		CreateProcess((char*)name.c_str(),     // Application name
+                     (char*)args.c_str(),                 // Application arguments
                      0,0,FALSE,CREATE_DEFAULT_ERROR_MODE,0,0,&siStartupInfo,&piProcessInfo);
 	}
 

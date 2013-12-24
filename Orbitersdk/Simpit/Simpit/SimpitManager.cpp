@@ -11,7 +11,7 @@ SimpitManager::SimpitManager(HINSTANCE hDLL) : Module(hDLL)
 
 void SimpitManager::handleEvent(Event ev)
 {
-	fprintf(Log::returnLogHandle(), "Captured event:id=%i\tstate=%i\n",&(ev.id), &(ev.state));
+	fprintf(Log::returnLogHandle(), "Captured event:id=%i\tstate=%i\n",ev.id, ev.state);
 	for (unsigned int i = 0; i < modules.size(); i++)
 	{
 		if (modules[i]->handleEventBlocking(ev) == true)
