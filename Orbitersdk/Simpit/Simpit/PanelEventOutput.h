@@ -26,6 +26,8 @@ public:
 private:
 	//our maps which store information about virtual button-event info
 	std::map<int, std::map<int, PanelMouseEvent>> userDefinitions;
+	std::map<int, int> currentEvents;
+	std::map<int, Event> stateDeterminedUserDef;
 	std::multimap<int, PanelMouseId> switches;
 
 

@@ -12,6 +12,17 @@ void PanelEventOutput::load(const char * key, const char * value)
 	{
 		strcpy(vesselName, value);
 	}
+
+	//check for state-dependent user def
+	if (strcmp(key, "state_dependent") == 0)
+	{
+		int id, ev_id, ev_state;
+		if (sscanf(value, "%d %d %d", &id, &ev_id, &ev_state) == 3)
+		{
+			stateDeterminedUserDef[id] = Event(ev_id, ev_state);
+		}
+
+	}
 	// check if this is a user def
 	else if (strcmp(key, "user_def") == 0)
 	{
@@ -39,6 +50,9 @@ void PanelEventOutput::save(FILEHANDLE outputFile) {}
 
 void PanelEventOutput::threadSafeHandleEvent(Event ev)
 {
+	//store current event
+	currentEvents[ev.id] = ev.state;
+
 	OBJHANDLE hSimVessel = oapiGetVesselByName(vesselName);
 	//check to see if we even have a key with the correct ID
 	if(switches.count(ev.id))
@@ -52,8 +66,21 @@ void PanelEventOutput::threadSafeHandleEvent(Event ev)
 			{
 				PanelMouseEvent toClick = userDefinitions[range.first->second.userDef][ev.state];
 
+				bool abort = false;
 
-				if (hSimVessel != NULL)
+				//check if this is a state-determined event and if we have a current event for it
+				if (stateDeterminedUserDef.count(range.first->second.userDef) > 0 &&
+					currentEvents.count(stateDeterminedUserDef[range.first->second.userDef].id) > 0)
+				{
+					if (stateDeterminedUserDef[range.first->second.userDef].state !=
+						currentEvents[stateDeterminedUserDef[range.first->second.userDef].id])
+					{
+						abort = true;
+					}
+
+				}
+
+				if (hSimVessel != NULL && abort == false)
 				{
 					//vessel exists, so create the interface
 					VESSEL2 *simVessel = (VESSEL2 *)oapiGetVesselInterface(hSimVessel);
