@@ -5,6 +5,7 @@
 #define SIMPIT_SERIAL_INPUT
 
 #include <string>
+#include <map>
 #include <Windows.h>
 
 #include "SimpitObserver.h"
@@ -27,6 +28,7 @@ public:
 	void readSerialThread();
 
 private:
+	std::map<int, int> currentEvents;
 	CRITICAL_SECTION critSection;
 	bool stopSerial;
 	Serial * serial;

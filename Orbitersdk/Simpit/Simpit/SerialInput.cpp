@@ -93,8 +93,23 @@ void SerialInput::readSerialThread()
 			sscanf(cbuffer,formatString,&switchNum,&newState);
 			buffer = buffer.substr(buffer.find("/")+1,buffer.length() - 7);
 
-			//send event upstream
-			SimpitObserver::handleEvent(Event(switchNum,newState));
+			if (currentEvents.count(switchNum) == 0)
+			{
+				currentEvents[switchNum] = newState;
+				//send event upstream
+				SimpitObserver::handleEvent(Event(switchNum, newState));
+			}
+			else
+			{
+				if (currentEvents[switchNum] != newState)
+				{
+					//send event upstream
+					SimpitObserver::handleEvent(Event(switchNum, newState));
+					//update current events
+					currentEvents[switchNum] = newState;
+				}
+			}
+
 		}
 	}
 
