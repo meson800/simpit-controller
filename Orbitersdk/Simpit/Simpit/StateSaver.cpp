@@ -39,6 +39,8 @@ void StateSaver::updateDialog()
 	{
 		//we're done with the dialog!!!
 		oapiCloseDialog(hDlg);
+		int result;
+		EndDialog(hDlg, (WPARAM)(&result));
 	}
 }
 
@@ -48,27 +50,38 @@ bool StateSaver::handleEventBlocking(Event ev)
 	{
 		if (ev.id > ranges[i].first && ev.id < ranges[i].second)
 		{
-			fprintf(Log::returnLogHandle(), "[StateSaver]-Handled and Blocked event, id=%i\tstate=%i\n", 
-				&(ev.id), &(ev.state));
 			//record that sucker!
 			currentEvents[ev.id] = ev.state;
 			//see if it matches one of our recorded events
 			//iterate over map
-			for (eventPairMapIterator it = recordedEvents.begin(); it != recordedEvents.end(); it++)
+
+			eventPairMapIterator itr = recordedEvents.begin();
+			while (itr != recordedEvents.end())
 			{
 				//check if the id and state are the same
-				if (it->second.first == ev.id && it->second.second == ev.state)
+				if (itr->second.first == ev.id && itr->second.second == ev.state)
 				{
+					fprintf(Log::returnLogHandle(), "[StateSaver]-Handled and Blocked event, id=%i\tstate=%i\n",
+						(ev.id), (ev.state));
 					//delete from listbox
-					SendMessage(listbox, LB_DELETESTRING, it->first, NULL);
+					int item_id = SendMessage(listbox, LB_FINDSTRINGEXACT, -1, (LPARAM)(itr->first.c_str()));
+
+					if (item_id != LB_ERR)
+						SendMessage(listbox, LB_DELETESTRING, item_id, NULL);
+					else
+						Log::println("[StateSaver]-Couldn't delete string out of listbox!");
 					//delete from map
-					recordedEvents.erase(it);
+					itr = recordedEvents.erase(itr);
 					updateDialog();
+					//return true, we handled it
+					return true;
+				}
+				else
+				{
+					itr++;
 				}
 			}
-
-			//return true, we handled it
-			return true;
+			updateDialog();
 		}
 	}
 	return false;
@@ -105,13 +118,14 @@ void StateSaver::loadScenarioState(FILEHANDLE scenario)
 		int ev_id, ev_state;
 		if (sscanf(line, "%i %i", &ev_id, &ev_state) == 2)
 		{
-			int listbox_id;
+			std::string item_name;
 			//see if there is an easy name for the event
 			if (eventToNameMapping.count(ev_id) != 0)
 			{
 				//just add the easy name to the listbox
-				listbox_id = SendMessage(listbox, LB_ADDSTRING, NULL,
+				SendMessage(listbox, LB_ADDSTRING, NULL,
 					(LPARAM)eventToNameMapping[ev_id].c_str());
+				item_name = eventToNameMapping[ev_id];
 			}
 			else
 			{
@@ -119,11 +133,13 @@ void StateSaver::loadScenarioState(FILEHANDLE scenario)
 				char idToString[100];
 				sprintf(idToString, "%d", ev_id);
 
-				listbox_id = SendMessage(listbox, LB_ADDSTRING, NULL,
+				SendMessage(listbox, LB_ADDSTRING, NULL,
 					(LPARAM)idToString);
+				
+				item_name = idToString;
 			}
 			//add to recorded events
-			recordedEvents[listbox_id] = std::make_pair(ev_id, ev_state);
+			recordedEvents[item_name] = std::make_pair(ev_id, ev_state);
 
 			updateDialog();
 		}
