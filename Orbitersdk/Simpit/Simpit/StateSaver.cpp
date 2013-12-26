@@ -58,6 +58,7 @@ bool StateSaver::handleEventBlocking(Event ev)
 			eventPairMapIterator itr = recordedEvents.begin();
 			while (itr != recordedEvents.end())
 			{
+				
 				//check if the id and state are the same
 				if (itr->second.first == ev.id && itr->second.second == ev.state)
 				{
@@ -77,9 +78,13 @@ bool StateSaver::handleEventBlocking(Event ev)
 					return true;
 				}
 				else
-				{
+				{	
+					//to make sure "bad" events are blocked, return true if the id is the same
+					if (itr->second.first == ev.id)
+						return true;
 					itr++;
 				}
+
 			}
 			updateDialog();
 		}
