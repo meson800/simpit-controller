@@ -34,7 +34,7 @@ private:
 	RECT mfdPos;
 	MFDWindow * window;
 	int mfdRegion [4];
-	std::map<Event,int> buttonMapping;
+	std::map<Event,std::pair<int,int>> buttonMapping;
 	bool hasRegion;
 
 	static int convertToButtonClass[15];

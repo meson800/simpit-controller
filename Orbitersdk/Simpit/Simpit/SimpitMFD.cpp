@@ -45,9 +45,10 @@ void SimpitMFD::load(const char * key, const char * value)
 	else if (strcmp(key, "event") == 0)
 	{
 		int eventId, eventState, buttonId;
-		if (sscanf(value, "%i %i %i", &eventId, &eventState, &buttonId) == 3)
+		int mouseEvent = -1;
+		if (sscanf(value, "%i %i %i %i", &eventId, &eventState, &buttonId, &mouseEvent) >= 3)
 		{
-			buttonMapping[Event(eventId, eventState)] = buttonId;
+			buttonMapping[Event(eventId, eventState)] = std::make_pair(buttonId,eventState);
 		}
 	}
 }
@@ -72,12 +73,26 @@ void SimpitMFD::handleEvent(Event ev)
 		HWND mfdWindow = window->returnDialog();
 
 		//find the correct button
-		HWND buttonWindow = GetDlgItem(mfdWindow, IDC_BUTTON1 + buttonMapping[ev]);
+		HWND buttonWindow = GetDlgItem(mfdWindow, IDC_BUTTON1 + buttonMapping[ev].first);
 		if (buttonWindow != NULL)
 		{
-			SendMessage(buttonWindow, WM_LBUTTONDOWN, 1, 0);
-			SendMessage(buttonWindow, WM_LBUTTONUP, 1, 0);
+			switch (buttonMapping[ev].second)
+			{
+			case -1:
+				//send both button down and up
+				SendMessage(buttonWindow, WM_LBUTTONDOWN, 1, 0);
+				SendMessage(buttonWindow, WM_LBUTTONUP, 1, 0);
+				break;
+			case 0:
+				//send button up
+				SendMessage(buttonWindow, WM_LBUTTONUP, 1, 0);
+				break;
+			case 1:
+				//send button down
+				SendMessage(buttonWindow, WM_LBUTTONDOWN, 1, 0);
+				break;
+			}
+
 		}
 	}
-		//window->ProcessButton(buttonMapping[ev],PANEL_MOUSE_LBDOWN);
 }
