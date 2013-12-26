@@ -3,6 +3,8 @@
 
 #include "SimpitMFD.h"
 
+int SimpitMFD::convertToButtonClass [15] = { 15, 13, 11, 9, 7, 5, 14, 12, 10, 8, 6, 4, 3, 2, 1 };
+
 SimpitMFD::SimpitMFD(HINSTANCE hDLL)
 {
 	moduleHandle = hDLL;
@@ -45,7 +47,7 @@ void SimpitMFD::load(const char * key, const char * value)
 		int eventId, eventState, buttonId;
 		if (sscanf(value, "%i %i %i", &eventId, &eventState, &buttonId) == 3)
 		{
-			buttonMapping[new Event(eventId, eventState)] = buttonId;
+			buttonMapping[Event(eventId, eventState)] = buttonId;
 		}
 	}
 }
@@ -65,6 +67,17 @@ void SimpitMFD::SimulationStart()
 
 void SimpitMFD::handleEvent(Event ev)
 {
-	if (buttonMapping.count(&ev))
-		window->ProcessButton(buttonMapping[&ev],PANEL_MOUSE_LBDOWN);
+	if (buttonMapping.count(ev))
+	{
+		HWND mfdWindow = window->returnDialog();
+
+		//find the correct button
+		HWND buttonWindow = GetDlgItem(mfdWindow, IDC_BUTTON1 + buttonMapping[ev]);
+		if (buttonWindow != NULL)
+		{
+			SendMessage(buttonWindow, WM_LBUTTONDOWN, 1, 0);
+			SendMessage(buttonWindow, WM_LBUTTONUP, 1, 0);
+		}
+	}
+		//window->ProcessButton(buttonMapping[ev],PANEL_MOUSE_LBDOWN);
 }

@@ -6,6 +6,8 @@
 
 #include <map>
 #include <Windows.h>
+
+#include "resource.h"
 #include "MFDWindow.h"
 #include "orbitersdk.h"
 #include "MFDAPI.h"
@@ -32,8 +34,10 @@ private:
 	RECT mfdPos;
 	MFDWindow * window;
 	int mfdRegion [4];
-	std::map<Event *,int> buttonMapping;
+	std::map<Event,int> buttonMapping;
 	bool hasRegion;
+
+	static int convertToButtonClass[15];
 };
 
 #endif
