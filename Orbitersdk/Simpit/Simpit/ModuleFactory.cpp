@@ -53,7 +53,11 @@ void ModuleFactory::createModules(vector<IO *>& moduleVector, HINSTANCE hDLL)
 				Log::println("[ModuleFactory]Creating StateSaver");
 				StateSaver * module = new StateSaver(hDLL);
 				moduleVector.insert(moduleVector.begin(),module);
+				//special case!!, do the loading with the front
 				StateObserver::setUpManager(module);
+
+				loadModuleFromFile(module, configFile);
+				continue;
 			}
 
 			//now give it the file to load
