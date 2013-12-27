@@ -98,7 +98,7 @@ void StateSaver::load(const char * key, const char * value)
 	if (strcmp(key, "range") == 0)
 	{
 		int first, second;
-		if (sscanf_s(value, " %i %i", &first, &second) == 2)
+		if (sscanf(value, " %i %i", &first, &second) == 2)
 			ranges.push_back(std::make_pair(first, second));
 	}
 	//load mapping
@@ -106,7 +106,7 @@ void StateSaver::load(const char * key, const char * value)
 	{
 		int map_key;
 		char map_value [256];
-		if (sscanf_s(value, " %i %s", &map_key, map_value) == 2)
+		if (sscanf(value, " %i %s", &map_key, map_value) == 2)
 			eventToNameMapping[map_key] = std::string(map_value);
 	}
 }
@@ -121,7 +121,7 @@ void StateSaver::loadScenarioState(FILEHANDLE scenario)
 	{
 		//load the recorded event and add to listbox
 		int ev_id, ev_state;
-		if (sscanf_s(line, "%i %i", &ev_id, &ev_state) == 2)
+		if (sscanf(line, "%i %i", &ev_id, &ev_state) == 2)
 		{
 			std::string item_name;
 			//see if there is an easy name for the event

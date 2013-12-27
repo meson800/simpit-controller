@@ -17,7 +17,7 @@ void PanelEventOutput::load(const char * key, const char * value)
 	if (strcmp(key, "state_dependent") == 0)
 	{
 		int id, ev_id, ev_state;
-		if (sscanf_s(value, "%d %d %d", &id, &ev_id, &ev_state) == 3)
+		if (sscanf(value, "%d %d %d", &id, &ev_id, &ev_state) == 3)
 		{
 			stateDeterminedUserDef[id] = Event(ev_id, ev_state);
 		}
@@ -27,10 +27,10 @@ void PanelEventOutput::load(const char * key, const char * value)
 	else if (strcmp(key, "user_def") == 0)
 	{
 		int id;
-		sscanf_s(readString.c_str(), "%i", &id);
+		sscanf(readString.c_str(), "%i", &id);
 		readString = readString.substr(readString.find(" ") + 1);
 		int newState, mx, my, mouseEvent;
-		while (sscanf_s(readString.c_str(), "%i %i %i %i", &newState, &mx, &my, &mouseEvent) >= 4)
+		while (sscanf(readString.c_str(), "%i %i %i %i", &newState, &mx, &my, &mouseEvent) >= 4)
 		{
 			userDefinitions[id][newState] = PanelMouseEvent(mx, my, mouseEvent);
 			for (int i = 0; i < 4; i++)
@@ -41,7 +41,7 @@ void PanelEventOutput::load(const char * key, const char * value)
 	else if (strcmp(key, "event") == 0)
 	{
 		int eventId,mouseEventId,userDefNum;
-		if (sscanf_s(value,"%i %i %i", &eventId,&userDefNum, &mouseEventId) == 3)
+		if (sscanf(value,"%i %i %i", &eventId,&userDefNum, &mouseEventId) == 3)
 			switches.insert(std::make_pair(eventId,PanelMouseId(mouseEventId,userDefNum)));
 	}
 }

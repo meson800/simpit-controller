@@ -13,7 +13,7 @@ void TimeBasedInput::load(const char * key, const char * value)
 	//SIMULATION_START eventId eventState
 	if (strcmp(key, "simulation_start") == 0)
 	{
-		if (sscanf_s(value, " %i %i", &eventId, &eventState))
+		if (sscanf(value, " %i %i", &eventId, &eventState))
 		{
 			dt = 0;
 			inputs.push_back(TimeSpec(0, dt, Event(eventId, eventState)));
@@ -25,7 +25,7 @@ void TimeBasedInput::load(const char * key, const char * value)
 	//REAL_TIME dt eventId eventState
 	if (strcmp(key, "real_time") == 0)
 	{
-		if (sscanf_s(value, " %f %i %i", &dt, &eventId, &eventState) == 3)
+		if (sscanf(value, " %f %i %i", &dt, &eventId, &eventState) == 3)
 		{
 			inputs.push_back(TimeSpec(1, dt, Event(eventId, eventState)));
 		}
@@ -36,7 +36,7 @@ void TimeBasedInput::load(const char * key, const char * value)
 	//SIM_TIME dt eventId eventState
 	if (strcmp(key, "sim_time") == 0)
 	{
-		if (sscanf_s(value, " %f %i %i", &dt, &eventId, &eventState) == 3)
+		if (sscanf(value, " %f %i %i", &dt, &eventId, &eventState) == 3)
 		{
 			inputs.push_back(TimeSpec(2, dt, Event(eventId, eventState)));
 		}
@@ -47,7 +47,7 @@ void TimeBasedInput::load(const char * key, const char * value)
 	//SIMULATION_END eventId eventState
 	if (strcmp(key, "simulation_end") == 0)
 	{
-		if (sscanf_s(value, " %i %i", &eventId, &eventState))
+		if (sscanf(value, " %i %i", &eventId, &eventState))
 		{
 			dt = 0;
 			inputs.push_back(TimeSpec(3, dt, Event(eventId, eventState)));

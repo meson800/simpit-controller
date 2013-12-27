@@ -32,7 +32,7 @@ std::string MacroExpander::macroToText(std::string macro)
 	int option;
 	int decimalPlaces;
 
-	int numArguments = sscanf_s(macro.c_str(),"<%255s %i i %i>", name, &option, &decimalPlaces);
+	int numArguments = sscanf(macro.c_str(),"<%255s %i i %i>", name, &option, &decimalPlaces);
 	std::string type_name = name;
 
 	//switch different macros
