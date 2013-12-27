@@ -11,7 +11,7 @@ void MacroExpander::expandString(std::string& string)
 		int firstPos, secondPos, length;
 		firstPos = string.find_first_of("<");
 		secondPos = string.find_first_of(">");
-		length = secondPos - firstPos;
+		length = secondPos - firstPos + 1;
 
 		//check that we found them
 		if (firstPos != -1 && secondPos != -1)
@@ -32,7 +32,7 @@ std::string MacroExpander::macroToText(std::string macro)
 	int option;
 	int decimalPlaces;
 
-	int numArguments = sscanf("<%255s %i i %i", name, &option, &decimalPlaces);
+	int numArguments = sscanf(macro.c_str(),"<%255s %i i %i>", name, &option, &decimalPlaces);
 	std::string type_name = name;
 
 	//switch different macros
@@ -71,5 +71,5 @@ std::string MacroExpander::macroToText(std::string macro)
 
 int MacroExpander::doubleToDecimalInt(double value, int decimalPlaces)
 {
-	return (int)(value * (10 * decimalPlaces));
+	return (int)(value * pow((double)10,(double)decimalPlaces));
 }
