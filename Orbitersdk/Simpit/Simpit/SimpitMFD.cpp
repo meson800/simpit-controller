@@ -22,7 +22,7 @@ void SimpitMFD::load(const char * key, const char * value)
 	if (strcmp(key, "position") == 0)
 	{
 		int left, top, right, bottom;
-		if (sscanf(value, "%i %i %i %i", &left, &top, &right, &bottom) == 4)
+		if (sscanf_s(value, "%i %i %i %i", &left, &top, &right, &bottom) == 4)
 		{
 			mfdPos.left = left;
 			mfdPos.top = top;
@@ -33,7 +33,7 @@ void SimpitMFD::load(const char * key, const char * value)
 	else if (strcmp(key, "region") == 0)
 	{
 		int left, top, right, bottom;
-		if (sscanf(value, "%i %i %i %i", &left, &top, &right, &bottom) == 4)
+		if (sscanf_s(value, "%i %i %i %i", &left, &top, &right, &bottom) == 4)
 		{
 			hasRegion = true;
 			mfdRegion[0] = left;
@@ -46,7 +46,7 @@ void SimpitMFD::load(const char * key, const char * value)
 	{
 		int eventId, eventState, buttonId;
 		int mouseEvent = -1;
-		if (sscanf(value, "%i %i %i %i", &eventId, &eventState, &buttonId, &mouseEvent) >= 3)
+		if (sscanf_s(value, "%i %i %i %i", &eventId, &eventState, &buttonId, &mouseEvent) >= 3)
 		{
 			buttonMapping[Event(eventId, eventState)] = std::make_pair(buttonId,eventState);
 		}

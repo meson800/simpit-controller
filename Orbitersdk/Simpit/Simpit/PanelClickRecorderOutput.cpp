@@ -12,19 +12,19 @@ void PanelClickRecorderOutput::load(const char * key, const char * value)
 	//now see if it is our vessel name
 	if (strcmp(key, "vessel_name") == 0)
 	{
-		sscanf(value,"%s", c_vesselName);
+		sscanf_s(value,"%s", c_vesselName);
 		vesselName = c_vesselName;
 	}
 
 	//record the starting record id if it is there
 	if (strcmp(key, "starting_record_id") == 0)
-		sscanf(value,"%i",&currentUserDefId);
+		sscanf_s(value,"%i",&currentUserDefId);
 
 	//see if recording should be enabled
 	if (strcmp(key, "auto_record") == 0)
 	{
 		int test_int;
-		sscanf(value, "%i", &test_int);
+		sscanf_s(value, "%i", &test_int);
 		if (test_int == 1)
 		{
 			record = true;
@@ -34,7 +34,7 @@ void PanelClickRecorderOutput::load(const char * key, const char * value)
 	//read log file info, if they want to change the defaults
 	if (strcmp(key, "event_log_name") == 0)
 	{
-		sscanf(value,"\"%254[^\"]\"",c_logName);
+		sscanf_s(value,"\"%254[^\"]\"",c_logName);
 		logName = c_logName;
 	}
 
@@ -49,7 +49,7 @@ void PanelClickRecorderOutput::load(const char * key, const char * value)
 	//read record output info
 	if (strcmp(key, "recording_log_name") == 0)
 	{
-		sscanf(value,"\"%254[^\"]\"",c_recordLogName);
+		sscanf_s(value,"\"%254[^\"]\"",c_recordLogName);
 		recordLogName = c_recordLogName;
 	}
 

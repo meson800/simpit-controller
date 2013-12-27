@@ -11,7 +11,7 @@ void KeyOutput::load(const char * key, const char * value)
 		Event ev;
 		char keys[256] = "";
 		char vesselClass[256]= "";
-		if (sscanf(value,"%i %i %256s %256s", &id, &state, keys, vesselClass) >= 3)
+		if (sscanf_s(value,"%i %i %256s %256s", &id, &state, keys, vesselClass) >= 3)
 		{
 			ev.id = id;
 			ev.state = state;

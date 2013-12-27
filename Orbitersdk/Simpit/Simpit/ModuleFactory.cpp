@@ -78,7 +78,7 @@ void ModuleFactory::loadModuleFromFile(IO * module, FILEHANDLE configFile)
 		if (line[0] != ';')
 		{
 			//read the key and the value, then call the load on the module
-			sscanf(line, "%255s = %255[^\n]", key, value);
+			sscanf_s(line, "%255s = %255[^\n]", key, value);
 			string s_key = key;
 			std::transform(s_key.begin(), s_key.end(), s_key.begin(), ::tolower);
 			//to lowercase

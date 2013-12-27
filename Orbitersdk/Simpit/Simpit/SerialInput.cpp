@@ -90,7 +90,7 @@ void SerialInput::readSerialThread()
 			char * cbuffer = new char [7];
 			strcpy(cbuffer,buffer.substr(buffer.find_first_of('.'),7).c_str());
 			int switchNum, newState;
-			sscanf(cbuffer,formatString,&switchNum,&newState);
+			sscanf_s(cbuffer,formatString,&switchNum,&newState);
 			buffer = buffer.substr(buffer.find("/")+1,buffer.length() - 7);
 
 			if (currentEvents.count(switchNum) == 0)

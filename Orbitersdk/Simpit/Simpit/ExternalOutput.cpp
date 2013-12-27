@@ -8,7 +8,7 @@ void ExternalOutput::load(const char * key, const char * value)
 	{
 		Event thisEvent;
 		programInfo thisInfo;
-		if (sscanf(value, "%i %i \"%254[^\"]\" \"%254[^\"]\"", &(thisEvent.id), &(thisEvent.state), &(thisInfo.name), &(thisInfo.args)) == 4)
+		if (sscanf_s(value, "%i %i \"%254[^\"]\" \"%254[^\"]\"", &(thisEvent.id), &(thisEvent.state), &(thisInfo.name), &(thisInfo.args)) == 4)
 		{
 			eventMapping[Event(thisEvent)] = thisInfo;
 		}
