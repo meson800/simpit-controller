@@ -26,7 +26,7 @@ public:
 	void handleEvent(Event ev);
 
 private:
-	std::map<Event *,programInfo> eventMapping;
+	std::map<Event,programInfo> eventMapping;
 };
 
 #endif

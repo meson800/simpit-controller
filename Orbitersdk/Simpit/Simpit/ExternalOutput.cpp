@@ -8,9 +8,9 @@ void ExternalOutput::load(const char * key, const char * value)
 	{
 		Event thisEvent;
 		programInfo thisInfo;
-		if (sscanf(value, "%i,%i,\"%254[^\"]\",\"%254[^\"]\"", &(thisEvent.id), &(thisEvent.state), &(thisInfo.name), &(thisInfo.args)) == 4)
+		if (sscanf(value, "%i %i \"%254[^\"]\" \"%254[^\"]\"", &(thisEvent.id), &(thisEvent.state), &(thisInfo.name), &(thisInfo.args)) == 4)
 		{
-			eventMapping[new Event(thisEvent)] = thisInfo;
+			eventMapping[Event(thisEvent)] = thisInfo;
 		}
 	}
 
@@ -19,7 +19,7 @@ void ExternalOutput::load(const char * key, const char * value)
 void ExternalOutput::handleEvent(Event ev)
 {
 	//check to see if it is even in the map
-	if (eventMapping.count(&ev))
+	if (eventMapping.count(ev))
 	{
 		STARTUPINFO         siStartupInfo;
 		PROCESS_INFORMATION piProcessInfo;
@@ -30,8 +30,11 @@ void ExternalOutput::handleEvent(Event ev)
 		siStartupInfo.cb = sizeof(siStartupInfo);
 
 		//run program name and args through MacroExpander
-		std::string name = eventMapping[&ev].name;
-		std::string args = eventMapping[&ev].args;
+		std::string name = eventMapping[ev].name;
+		std::string args = eventMapping[ev].args;
+
+		//insert space into args
+		args.insert(args.begin(), ' ');
 
 		MacroExpander::expandString(name);
 		MacroExpander::expandString(args);
