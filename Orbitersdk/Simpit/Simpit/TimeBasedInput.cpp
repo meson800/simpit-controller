@@ -42,6 +42,18 @@ void TimeBasedInput::load(const char * key, const char * value)
 		}
 	}
 
+	//type 3
+	//format
+	//SIMULATION_END eventId eventState
+	if (strcmp(key, "simulation_end") == 0)
+	{
+		if (sscanf(value, " %i %i", &eventId, &eventState))
+		{
+			dt = 0;
+			inputs.push_back(TimeSpec(3, dt, Event(eventId, eventState)));
+		}
+	}
+
 }
 
 void TimeBasedInput::SimulationStart()
@@ -50,6 +62,16 @@ void TimeBasedInput::SimulationStart()
 	for (unsigned int i = 0; i < inputs.size(); i++)
 	{
 		if(inputs[i].type == 0)
+			SimpitObserver::handleEvent(inputs[i].eventToFire);
+	}
+}
+
+void TimeBasedInput::SimulationEnd()
+{
+	//handle all case 3 inputs
+	for (unsigned int i = 0; i < inputs.size(); i++)
+	{
+		if (inputs[i].type == 3)
 			SimpitObserver::handleEvent(inputs[i].eventToFire);
 	}
 }

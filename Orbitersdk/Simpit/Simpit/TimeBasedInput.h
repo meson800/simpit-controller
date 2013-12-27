@@ -28,6 +28,7 @@ public:
 	TimeBasedInput () {}
 	void load (const char * key, const char * value);
 	void SimulationStart();
+	void SimulationEnd();
 	void PostStep(double simt, double simdt, double mjd);
 
 private:
