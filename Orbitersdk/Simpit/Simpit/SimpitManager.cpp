@@ -33,7 +33,7 @@ void SimpitManager::clbkFocusChanged(OBJHANDLE old_focus, OBJHANDLE new_focus)
 		modules[i]->FocusChanged(old_focus,new_focus);
 	}
 }
-void SimpitManager::clbkSimulationEnd(RenderMode mode)
+void SimpitManager::clbkSimulationEnd()
 {
 	Log::println("*Simulation End");
 	for (unsigned int i = 0; i < modules.size(); i++)
