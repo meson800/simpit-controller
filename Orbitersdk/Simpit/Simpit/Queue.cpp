@@ -1,4 +1,5 @@
 //Code used with permission from Face (http://orbiter-forum.com/member.php?u=293)
+//Download Face's code from http://www.snoopie.at/face/omp/download/OrbiterHooking.zip
 //See http://orbiter-forum.com/showthread.php?p=338410&postcount=2 for more info
 
 //Modifications to Face's code under Copyright (c) 2013 Christopher Johnstone(meson800)
