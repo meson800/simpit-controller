@@ -52,7 +52,7 @@ int VesselHook::hookVtable(bool on)
 	LPDWORD *lpVtabl2= (LPDWORD*)HookMethodObject;
 	LPDWORD pVtabl2=(LPDWORD)*lpVtabl2;
 	//Get process information
-	HANDLE hSelf = OpenProcess(PROCESS_ALL_ACCESS, FALSE, ::GetCurrentProcessId());
+	HANDLE hSelf = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_OPERATION, FALSE, ::GetCurrentProcessId());
 	MEMORY_BASIC_INFORMATION mbi;
 
 	//Open up vtable of linked object
