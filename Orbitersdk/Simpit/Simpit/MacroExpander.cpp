@@ -39,7 +39,8 @@ std::string MacroExpander::macroToText(std::string macro)
 	if (type_name.compare("fuel_percent") == 0)
 	{
 		PROPELLANT_HANDLE fuel_handle = focusVessel->GetPropellantHandleByIndex(option);
-		value = oapiGetPropellantMass(fuel_handle) / oapiGetPropellantMaxMass(fuel_handle);
+		if (fuel_handle != NULL)
+			value = oapiGetPropellantMass(fuel_handle) / oapiGetPropellantMaxMass(fuel_handle);
 	}
 	else if (type_name.compare("fuel_mass") == 0)
 	{
@@ -50,7 +51,8 @@ std::string MacroExpander::macroToText(std::string macro)
 		else
 		{
 			PROPELLANT_HANDLE fuel_handle = focusVessel->GetPropellantHandleByIndex(option);
-			value = oapiGetPropellantMass(fuel_handle);
+			if (fuel_handle != NULL)
+				value = oapiGetPropellantMass(fuel_handle);
 		}
 
 	}
