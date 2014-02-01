@@ -118,8 +118,9 @@ PanelEventOutput
 ####Advanced
 * Decide what user definitions you want to have.  This can be done by analyzing the panel you want
 to simulate.  For example, if you want to simulate the DGIV, there are two main types of buttons:  
-![A push button](/images/push_button.jpg)
-and ![A toggle switch](/images/toggle_switch.jpg)
+![A push button](https://dl.dropboxusercontent.com/u/4618573/simpit-controller/images/push_button.jpg)  
+and   
+![A toggle switch](https://dl.dropboxusercontent.com/u/4618573/simpit-controller/images/toggle_switch.jpg)  
 Each type can now be turned into a user definition.
 * Using PanelClickRecorderOutput in non-auto-record mode, launch a scenario and click the buttons
 you want to connect to your simpit.
