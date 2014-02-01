@@ -12,21 +12,27 @@ Events are not normally "blocked", and several submodules can recieve the same e
 StateSaver is the exception, as it does not make sense to process events until the simpit 
 is syncronized with the virtual Orbiter world.
 
-Quickstart
----------------
-One of the simplest uses of Simpit-Controller is the auto-placement of external MFDs.
-To auto-create an external MFD, add the following to the bottom of Config/simpit_config.cfg
+Basic Setup
+-----------
+Configuration is done by editing the file orbiter_root/Config/simpit_config.cfg
+
+Inside the config file, submodule configuration sections are seperated by BEGIN/END blocks
+similar to standard Orbiter scenario files.  
+
+The "name token" (SIMPIT_MFD in the following example) is generally the name of the module,
+written in all uppercase letters with a underscore seperating words.
+
+For example:
 ```
 BEGIN SIMPIT_MFD
-POSITION x1 y1 x2 y2
-END SIMPIT_MFD
+option_name = value
+END
 ```
-Replace x1 and y1 with the upper left corner of where you want the MFD placed, and
-replace x2 and y2 with the lower right corner.  
-Simpit-controller will now automatically place and resize an external MFD in the desired location!
-
 Avaliable Submodules
 ---------------------
+See below for a list of modules; each module page has more information on individual options.
+Options are in **bold** if required, and are in *italics* if optional.
+
 [SerialInput](./SerialInput.md)  
 [TimeBasedInput](./TimeBasedInput.md)  
 [PanelEventOutput](./TimeEventOutput.md)  
