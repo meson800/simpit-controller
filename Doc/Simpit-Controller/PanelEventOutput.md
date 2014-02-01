@@ -93,3 +93,59 @@ event = 10 53 1
 The above links event ID 10 with user definition 1.  When an event with ID=10 is triggered, user
 definition 1 is checked.  If there is a set handling that event's state, a mouse click is simulated
 at the user definition's coordinates on panel area #53.
+
+Usage
+-----
+There are two methods of configuring PanelEventOutput
+
+####Simple
+* Use PanelClickRecorderOutput in auto-record mode and an input.  Add it to the module list with
+something like the following:
+```
+BEGIN PANEL_CLICK_RECORDER_OUTPUT  
+vessel_name = GL-01  
+auto_record = 1  
+END
+```
+* Start a scenario with a DG named "GL-01"
+* Click a panel button in Orbiter
+* Flip a switch in the simpit that coorsponds to that button
+* Close the simulation
+* Open the file orbiterroot/EventRecorderOutput.log, and copy the lines into the config for
+PanelEventOutput
+
+****************************************
+####Advanced
+* Decide what user definitions you want to have.  This can be done by analyzing the panel you want
+to simulate.  For example, if you want to simulate the DGIV, there are two main types of buttons:  
+![A push button](/images/push_button.jpg)
+and ![A toggle switch](/images/toggle_switch.jpg)
+Each type can now be turned into a user definition.
+* Using PanelClickRecorderOutput in non-auto-record mode, launch a scenario and click the buttons
+you want to connect to your simpit.
+* Try to figure out a pattern to create the user definitions. In my case, I simulated the push
+buttons with a toggle switch; I wanted to trigger a mouse click on the push button when my toggle
+switch went to state 0 (off) or 1 (on).  In this case, make the first user definition like the following:
+```
+user_def = 1 0 10 10 1 1 10 10 1
+```
+which means trigger a mouse click in the center of the button if the state is 0/1.
+
+* I also simulated the toggle switches with toggle switches.  In this case, I wanted to click near the top
+of the button if the toggle switch was on, and near the bottom if it was off.
+```
+user_def = 2 0 10 30 1 1 10 10 1
+```
+which means trigger a mouse click near the bottom when the state is 0, and near the top if state is 1.
+* Now, connect events to user definitions.  For example, if I had two toggle switches tha simulated push buttons,
+with ID's equal to 10 and 11, which simulated clicks on panel area's 150 and 152, this would be the configuration:
+```
+event = 10 150 1
+event = 11 152 1
+```
+Additionally, if you had two toggle switches which actually simulated toggle switches, with ID's equal to 52 and 53,
+which simulated clicks on panel areas 120 and 134, this would be the configuration:
+```
+event = 52 120 2
+event = 53 134 2
+```
