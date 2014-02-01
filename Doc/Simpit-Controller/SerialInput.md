@@ -10,8 +10,8 @@ Options
 
 ******************************************
 
-**com_port**: String describing which com port to connect to
-Always connects to the specified com port at a baud rate of 9600
+**com_port**: String describing which com port to connect to.
+Always uses a baud rate of 9600.
 Example:
 ```
 com_port = COM3
@@ -19,24 +19,24 @@ com_port = COM3
 
 ******************************************
 
-**format_string**:String defining a [scanf format string](http://www.cplusplus.com/reference/cstdio/scanf/) which tells SerialInput
+**format_string**: String defining a [scanf format string](http://www.cplusplus.com/reference/cstdio/scanf/) which tells SerialInput
 how to interpret messages over the serial port.
 
-SerialInput expects a format string including two integer (%i) values. The first is
-event id, the second is the state.
+SerialInput expects a format string which includes two integer (%i) values. The first is
+event ID, the second is the state.
 Avoid whitespace in format string.
 
 Examples:
 ```
 format_string = .%i,%i/
 ```
-The above interprets the following serial port messages
+The above interprets the following serial port messages:
 ```
 .10,1/.15,0/.12,2/.25,0/
 ```
-As four events, the first with an ID of 10 and a state of 1, the second 
+as four events(the first with an ID of 10 and a state of 1, the second 
 with an ID of 15 and a state of 0, the third with an ID of 12 and a state of 2,
-and the forth with an ID of 25 and a state of 0.
+and the forth with an ID of 25 and a state of 0).
   
   
 ```

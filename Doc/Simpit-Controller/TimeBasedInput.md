@@ -9,11 +9,11 @@ Options
 
 ******************************************
 
-*simulation_start*: Value is two integers seperated by a space.  At simulation
+*simulation_start*: Value consists of two integers seperated by a space.  At simulation
 start, an event with an ID equal to the first integer, and a state equal to the second,
 is fired and passed on.
 
-Any number of these may be defined
+Any number of these may be defined.
 
 Example:
 ```
@@ -25,7 +25,7 @@ Fires an event (ID=170, state=1) at simulation start.
 
 *simulation_end*: Value is the same as the above, except event is fired at simulation end.
 
-Any number of these may be defined
+Any number of these may be defined.
 
 Example:
 ```
@@ -35,11 +35,11 @@ Fires an event (ID=12, state=0) at simulation end.
 
 ******************************************
 
-*real_time*: Value is a decimal followed by two integers.
+*real_time*: Value consists of a decimal followed by two integers.
 The decimal defines how often, in real-time seconds, an event should be fired.
 The two integers define an event as described above.
 
-Any number of these may be defined
+Any number of these may be defined.
 
 Example:
 ```
@@ -49,10 +49,10 @@ Fires an event (ID=54, state=1) every 1.5 real seconds
 
 ******************************************
 
-*sim_time*: Value is the same as the real_time option, except the decimal determines,
-in simulation-time seconds, how often the event should be fired.
+*sim_time*: Value is the same as the real_time option, except the decimal determines
+how often the event should be fired in seconds of simulation time.
 
-Any number of these may be defined
+Any number of these may be defined.
 
 Example:
 ```
