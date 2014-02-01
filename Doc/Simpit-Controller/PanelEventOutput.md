@@ -102,7 +102,7 @@ There are two methods of configuring PanelEventOutput
 * Use PanelClickRecorderOutput in auto-record mode and an input.  Add it to the module list with
 something like the following:
 ```
-BEGIN PANEL_CLICK_RECORDER_OUTPUT  
+BEGIN PANEL_CLICK_RECORDER  
 vessel_name = GL-01  
 auto_record = 1  
 END
