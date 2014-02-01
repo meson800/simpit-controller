@@ -35,7 +35,7 @@ Options are in **bold** if required, and are in *italics* if optional.
 
 [SerialInput](./SerialInput.md)  
 [TimeBasedInput](./TimeBasedInput.md)  
-[PanelEventOutput](./TimeEventOutput.md)  
+[PanelEventOutput](./PanelEventOutput.md)  
 [PanelEventRecorderOutput](./PanelEventRecorderOutput.md)  
 [ExternalOutput](./ExternalOutput.md)  
 [SimpitMFD](./SimpitMFD.md)  
