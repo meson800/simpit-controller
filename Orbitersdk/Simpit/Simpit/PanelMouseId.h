@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #ifndef SIMPIT_PANEL_MOUSE_ID
 #define SIMPIT_PANEL_MOUSE_ID
 

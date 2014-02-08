@@ -1,8 +1,10 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #include "ThreadSafeOutput.h"
 
-ThreadSafeOutput::ThreadSafeOutput(boost::function<void (Event)> _handle) : Output(_handle)
+ThreadSafeOutput::ThreadSafeOutput()
 {
-	handleEventFunc = _handle;
 	//set up critical section for below
 	InitializeCriticalSection(&ourCritSection);
 }

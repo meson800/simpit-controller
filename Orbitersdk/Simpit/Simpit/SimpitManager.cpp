@@ -1,40 +1,26 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #include "SimpitManager.h"
 
 SimpitManager::SimpitManager(HINSTANCE hDLL) : Module(hDLL)
 {
-	FILEHANDLE configFile = oapiOpenFile("simpit_config.cfg",FILE_IN,CONFIG);
-	char *moduleName;
-	while (oapiReadScenario_nextline(configFile,moduleName))
-	{
-		//when we haven't reached an EOF, then this must be a module name;
-		//ignore comments
-		if (strcmp(moduleName,"") != 0)
-		{
-			if (strcmp(moduleName, "BEGIN PANEL_EVENT_OUTPUT") == 0)
-				modules.push_back(new PanelEventOutput(boost::bind(&SimpitManager::handleEvent,this, _1)));
-			else if(strcmp(moduleName, "BEGIN SERIAL_INPUT") == 0)
-				modules.push_back(new SerialInput(boost::bind(&SimpitManager::handleEvent,this, _1)));
-			else if(strcmp(moduleName, "BEGIN PANEL_CLICK_RECORDER") == 0)
-				modules.push_back(new PanelClickRecorderOutput(boost::bind(&SimpitManager::handleEvent,this,_1)));
-			else if(strcmp(moduleName, "BEGIN SIMPIT_MFD") == 0)
-				modules.push_back(new SimpitMFD(boost::bind(&SimpitManager::handleEvent,this,_1),hDLL));
-
-			//now give it the file to load
-			modules.back()->load(configFile);
-		}
-	}
+	ModuleFactory::createModules(modules, hDLL);
 
 }
 
 void SimpitManager::handleEvent(Event ev)
 {
+	fprintf(Log::returnLogHandle(), "Captured event:id=%i\tstate=%i\n",ev.id, ev.state);
 	for (unsigned int i = 0; i < modules.size(); i++)
 	{
-		modules[i]->handleEvent(ev);
+		if (modules[i]->handleEventBlocking(ev) == true)
+			return;
 	}
 }
 void SimpitManager::clbkSimulationStart(RenderMode mode)
 {
+	Log::println("*Simulation Start");
 	for (unsigned int i = 0; i < modules.size(); i++)
 	{
 		modules[i]->SimulationStart();
@@ -47,8 +33,9 @@ void SimpitManager::clbkFocusChanged(OBJHANDLE old_focus, OBJHANDLE new_focus)
 		modules[i]->FocusChanged(old_focus,new_focus);
 	}
 }
-void SimpitManager::clbkSimulationEnd(RenderMode mode)
+void SimpitManager::clbkSimulationEnd()
 {
+	Log::println("*Simulation End");
 	for (unsigned int i = 0; i < modules.size(); i++)
 	{
 		modules[i]->SimulationEnd();

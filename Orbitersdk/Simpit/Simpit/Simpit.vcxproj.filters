@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Outputs\MFD">
       <UniqueIdentifier>{4f4faab4-fb4f-4b7f-aa15-266c837939ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{90236353-1639-4d2f-be57-5286e0e0aee8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -55,9 +58,6 @@
       <Filter>Source Files\Inputs</Filter>
     </ClCompile>
     <ClCompile Include="Serial.cpp">
-      <Filter>Source Files\Inputs</Filter>
-    </ClCompile>
-    <ClCompile Include="Queue.cpp">
       <Filter>Source Files\Inputs</Filter>
     </ClCompile>
     <ClCompile Include="VesselHook.cpp">
@@ -84,6 +84,36 @@
     <ClCompile Include="ThreadSafeOutput.cpp">
       <Filter>Source Files\Outputs</Filter>
     </ClCompile>
+    <ClCompile Include="Queue.cpp">
+      <Filter>Source Files\Hooking</Filter>
+    </ClCompile>
+    <ClCompile Include="HookObserver.cpp">
+      <Filter>Source Files\Hooking</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpitObserver.cpp">
+      <Filter>Source Files\Hooking</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeBasedInput.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyOutput.cpp">
+      <Filter>Source Files\Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="StateSaver.cpp">
+      <Filter>Source Files\Outputs</Filter>
+    </ClCompile>
+    <ClCompile Include="StateObserver.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="MacroExpander.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpitManager.h">
@@ -95,16 +125,10 @@
     <ClInclude Include="resource.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="StdAfx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
     <ClInclude Include="Serial.h">
-      <Filter>Header Files\Inputs</Filter>
-    </ClInclude>
-    <ClInclude Include="Queue.h">
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
     <ClInclude Include="SerialInput.h">
@@ -113,14 +137,8 @@
     <ClInclude Include="ExternalOutput.h">
       <Filter>Header Files\Outputs</Filter>
     </ClInclude>
-    <ClInclude Include="PanelEventOutput.h">
-      <Filter>Header Files\Outputs</Filter>
-    </ClInclude>
     <ClInclude Include="PanelClickRecorderOutput.h">
       <Filter>Header Files\Outputs</Filter>
-    </ClInclude>
-    <ClInclude Include="HookClass.h">
-      <Filter>Header Files\Hooking</Filter>
     </ClInclude>
     <ClInclude Include="HookMethods.h">
       <Filter>Header Files\Hooking</Filter>
@@ -152,6 +170,42 @@
     <ClInclude Include="ThreadSafeOutput.h">
       <Filter>Header Files\Outputs</Filter>
     </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files\Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelEventOutput.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="HookObserver.h">
+      <Filter>Header Files\Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpitObserver.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeBasedInput.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyOutput.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="StateSaver.h">
+      <Filter>Header Files\Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="StateObserver.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="MacroExpander.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="diagram.cd" />
@@ -159,6 +213,7 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="info.txt" />
+    <None Include="ModuleList.txt" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ExtMFD.rc">

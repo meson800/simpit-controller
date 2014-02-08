@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #ifndef MFD_STUFF_HEADER
 #define MFD_STUFF_HEADER
 
@@ -43,7 +46,7 @@ void InitMFD(HINSTANCE hDLL)
 	RegisterClass (&wndClass);
 }
 
-DLLCLBK void ExitModule (HINSTANCE hDLL)
+void ShutdownMFD (HINSTANCE hDLL)
 {
 	// Unregister window classes
 	UnregisterClass ("ExtMFD_Display", g_hInst);

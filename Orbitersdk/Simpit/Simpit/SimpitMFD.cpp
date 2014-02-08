@@ -1,8 +1,12 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #include "SimpitMFD.h"
 
-SimpitMFD::SimpitMFD(boost::function<void (Event)> _handle, HINSTANCE hDLL): Output(_handle)
+int SimpitMFD::convertToButtonClass [15] = { 15, 13, 11, 9, 7, 5, 14, 12, 10, 8, 6, 4, 3, 2, 1 };
+
+SimpitMFD::SimpitMFD(HINSTANCE hDLL)
 {
-	handleEventFunc = _handle;
 	moduleHandle = hDLL;
 	hasRegion = false;
 	
@@ -13,38 +17,39 @@ SimpitMFD::~SimpitMFD()
 	delete moduleHandle;
 }
 
-void SimpitMFD::load(FILEHANDLE inputFile)
+void SimpitMFD::load(const char * key, const char * value)
 {
-	char *line;
-	while (oapiReadScenario_nextline(inputFile,line))
+	if (strcmp(key, "position") == 0)
 	{
-		if (line[0] != ';')
+		int left, top, right, bottom;
+		if (sscanf(value, "%i %i %i %i", &left, &top, &right, &bottom) == 4)
 		{
-			int left,top,right,bottom;
-			if (sscanf(line,"POSITION %i %i %i %i",&left,&top,&right,&bottom) == 4)
-			{
-				mfdPos.left = left;
-				mfdPos.top = top;
-				mfdPos.right = right;
-				mfdPos.bottom = bottom;
-			}
-			if (sscanf(line,"REGION %i %i %i %i",&left,&top,&right,&bottom) == 4)
-			{
-				hasRegion = true;
-				mfdRegion[0] = left;
-				mfdRegion[1] = top;
-				mfdRegion[2] = right;
-				mfdRegion[3] = bottom;
-			}
-
-			int eventId,eventState,buttonId;
-			if (sscanf(line,"%i %i %i",&eventId,&eventState,&buttonId) == 3)
-			{
-				buttonMapping[new Event(eventId,eventState)] = buttonId ;
-			}
-			
+			mfdPos.left = left;
+			mfdPos.top = top;
+			mfdPos.right = right;
+			mfdPos.bottom = bottom;
 		}
-		
+	}
+	else if (strcmp(key, "region") == 0)
+	{
+		int left, top, right, bottom;
+		if (sscanf(value, "%i %i %i %i", &left, &top, &right, &bottom) == 4)
+		{
+			hasRegion = true;
+			mfdRegion[0] = left;
+			mfdRegion[1] = top;
+			mfdRegion[2] = right;
+			mfdRegion[3] = bottom;
+		}
+	}
+	else if (strcmp(key, "event") == 0)
+	{
+		int eventId, eventState, buttonId;
+		int mouseEvent = -1;
+		if (sscanf(value, "%i %i %i %i", &eventId, &eventState, &buttonId, &mouseEvent) >= 3)
+		{
+			buttonMapping[Event(eventId, eventState)] = std::make_pair(buttonId,eventState);
+		}
 	}
 }
 
@@ -63,6 +68,31 @@ void SimpitMFD::SimulationStart()
 
 void SimpitMFD::handleEvent(Event ev)
 {
-	if (buttonMapping.count(&ev))
-		window->ProcessButton(buttonMapping[&ev],PANEL_MOUSE_LBDOWN);
+	if (buttonMapping.count(ev))
+	{
+		HWND mfdWindow = window->returnDialog();
+
+		//find the correct button
+		HWND buttonWindow = GetDlgItem(mfdWindow, IDC_BUTTON1 + buttonMapping[ev].first);
+		if (buttonWindow != NULL)
+		{
+			switch (buttonMapping[ev].second)
+			{
+			case -1:
+				//send both button down and up
+				SendMessage(buttonWindow, WM_LBUTTONDOWN, 1, 0);
+				SendMessage(buttonWindow, WM_LBUTTONUP, 1, 0);
+				break;
+			case 0:
+				//send button up
+				SendMessage(buttonWindow, WM_LBUTTONUP, 1, 0);
+				break;
+			case 1:
+				//send button down
+				SendMessage(buttonWindow, WM_LBUTTONDOWN, 1, 0);
+				break;
+			}
+
+		}
+	}
 }

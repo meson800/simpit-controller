@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #ifndef THREAD_SAFE_OUTPUT
 #define THREAD_SAFE_OUTPUT
 
@@ -11,7 +14,7 @@
 class ThreadSafeOutput : public Output
 {
 public:
-	ThreadSafeOutput(boost::function<void (Event)> _handle);
+	ThreadSafeOutput();
 	~ThreadSafeOutput();
 	void handleEvent(Event ev);
 	void virtual threadSafeHandleEvent(Event ev) {}

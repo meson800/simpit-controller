@@ -1,3 +1,10 @@
+//Code used with permission from Face (http://orbiter-forum.com/member.php?u=293)
+//Download Face's code from http://www.snoopie.at/face/omp/download/OrbiterHooking.zip
+//See http://orbiter-forum.com/showthread.php?p=338410&postcount=2 for more info
+
+//Modifications to Face's code under Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 // HookMethods.cpp: implementation of the HookMethods class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +34,7 @@ HookMethods::HookMethods():VESSEL2(0,0)
 					{														\
 						FILE *l=GetEventLogFile();							\
 						Queue *q=GetEventQueue();							\
-						union Event *event=new union Event					
+						union Hook_Event *event=new union Hook_Event					
 
 #define POSTTASK		q->Enqueue(event);									\
 						fflush(l);											\
@@ -42,7 +49,7 @@ HookMethods::HookMethods():VESSEL2(0,0)
 					{														\
 						FILE *l=GetEventLogFile();							\
 						Queue *q=GetEventQueue();							\
-						union Event *event=new union Event
+						union Hook_Event *event=new union Hook_Event
 
 #define POSTPOST2		q->Enqueue(event);									\
 						fflush(l);											\
@@ -264,6 +271,7 @@ bool HookMethods::clbkLoadPanel (int id)
 }*/
 bool HookMethods::clbkPanelMouseEvent (int id, int ev, int mx, int my)
 {
+	observer.h_handlePanelMouseEvent(id,ev,mx,my);
 	bool retvalue=true;
 	PRETASK2	
 	{

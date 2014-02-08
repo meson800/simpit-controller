@@ -5,6 +5,7 @@
 #define IDD_MFD                         101
 #define IDB_PIN                         104
 #define IDD_SIMPIT_MAIN                 106
+#define IDD_STATE                       107
 #define IDSTICK                         999
 #define IDC_WHOAMI                      1000
 #define IDS_INFO                        1000
@@ -32,7 +33,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        107
+#define _APS_NEXT_RESOURCE_VALUE        109
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1022
 #define _APS_NEXT_SYMED_VALUE           101

@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #ifndef SIMPIT_OUTPUT
 #define SIMPIT_OUTPUT
 
@@ -8,7 +11,7 @@ class IO;
 class Output : public IO
 {
 public:
-	Output(boost::function<void (Event)> _handle) : IO(_handle) {handleEventFunc = _handle;}
+	Output() {}
 
 };
 //Include user definitions, switch state 1/0 and where it should target

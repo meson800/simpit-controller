@@ -5,6 +5,10 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_d|Win32">
+      <Configuration>Release_d</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -22,7 +26,13 @@
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_d|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
@@ -37,11 +47,29 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_d|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\Utils\boost\include;$(SDKDir)\Simpit\HelperDLL</IncludePath>
-    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;C:\Utils\boost\lib;$(SDKLibDir)</LibraryPath>
-    <OutDir>$(OrbiterDir)\Modules\Plugin\</OutDir>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(SDKDir)\Simpit\HelperDLL;$(SDKDir)\include</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SDKLibDir)</LibraryPath>
+    <OutDir>..\..\..\Modules\Plugin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_d|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>C:\Other Stuff\Orbiter\Orbiter Programming\Modules\Plugin\</OutDir>
+    <TargetExt>.dll</TargetExt>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\Simpit\HelperDLL;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\include</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\Modules\Plugin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetExt>.dll</TargetExt>
+    <IncludePath>..\..\..\Orbitersdk\Simpit\HelperDLL;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+    <LibraryPath>..\..\..\Orbitersdk\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -67,21 +95,45 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <ForcedIncludeFiles>StdAfx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <OutputFile>..\..\..\Modules\Plugin\Simpit.dll</OutputFile>
+      <AdditionalDependencies>orbiter.lib;orbitersdk.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_d|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles>StdAfx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>orbiter.lib;orbitersdk.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>C:\Other Stuff\Orbiter\Orbiter Programming\Modules\Plugin\Simpit.dll</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ExternalOutput.cpp" />
     <ClCompile Include="HookMethods.cpp" />
+    <ClCompile Include="HookObserver.cpp" />
     <ClCompile Include="IO.cpp" />
+    <ClCompile Include="KeyOutput.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="MacroExpander.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MFDWindow.cpp" />
+    <ClCompile Include="ModuleFactory.cpp" />
     <ClCompile Include="PanelClickRecorderOutput.cpp" />
     <ClCompile Include="PanelEventOutput.cpp" />
     <ClCompile Include="Queue.cpp" />
@@ -89,15 +141,23 @@
     <ClCompile Include="SerialInput.cpp" />
     <ClCompile Include="SimpitManager.cpp" />
     <ClCompile Include="SimpitMFD.cpp" />
+    <ClCompile Include="SimpitObserver.cpp" />
+    <ClCompile Include="StateObserver.cpp" />
+    <ClCompile Include="StateSaver.cpp" />
     <ClCompile Include="ThreadSafeOutput.cpp" />
+    <ClCompile Include="TimeBasedInput.cpp" />
     <ClCompile Include="VesselHook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExternalOutput.h" />
-    <ClInclude Include="HookClass.h" />
     <ClInclude Include="HookMethods.h" />
+    <ClInclude Include="HookObserver.h" />
+    <ClInclude Include="KeyOutput.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="MacroExpander.h" />
     <ClInclude Include="MFDWindow.h" />
     <ClInclude Include="MFD_Stuff.h" />
+    <ClInclude Include="ModuleFactory.h" />
     <ClInclude Include="PanelClickRecorderOutput.h" />
     <ClInclude Include="PanelMouseEvent.h" />
     <ClInclude Include="Event.h" />
@@ -112,14 +172,19 @@
     <ClInclude Include="SerialInput.h" />
     <ClInclude Include="SimpitManager.h" />
     <ClInclude Include="SimpitMFD.h" />
+    <ClInclude Include="SimpitObserver.h" />
+    <ClInclude Include="StateObserver.h" />
+    <ClInclude Include="StateSaver.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="ThreadSafeOutput.h" />
+    <ClInclude Include="TimeBasedInput.h" />
     <ClInclude Include="VesselHook.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Bitmaps\bt_stick.bmp" />
     <None Include="diagram.cd" />
     <None Include="info.txt" />
+    <None Include="ModuleList.txt" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ExtMFD.rc">

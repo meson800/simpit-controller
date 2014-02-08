@@ -1,3 +1,6 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #ifndef SIMPIT_INPUT
 #define SIMPIT_INPUT
 
@@ -6,7 +9,7 @@
 class Input : public IO
 {
 public:
-	Input(boost::function<void (Event)> _handle) : IO(_handle) {handleEventFunc = _handle;}
+	Input(){}
 	void handleEvent(Event ev) {}
 };
 

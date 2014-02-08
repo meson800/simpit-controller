@@ -1,3 +1,10 @@
+//Code used with permission from Face (http://orbiter-forum.com/member.php?u=293)
+//Download Face's code from http://www.snoopie.at/face/omp/download/OrbiterHooking.zip
+//See http://orbiter-forum.com/showthread.php?p=338410&postcount=2 for more info
+
+//Modifications to Face's code under Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 // VesselHook.cpp: implementation of the VesselHook class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -45,7 +52,7 @@ int VesselHook::hookVtable(bool on)
 	LPDWORD *lpVtabl2= (LPDWORD*)HookMethodObject;
 	LPDWORD pVtabl2=(LPDWORD)*lpVtabl2;
 	//Get process information
-	HANDLE hSelf = OpenProcess(PROCESS_ALL_ACCESS, FALSE, ::GetCurrentProcessId());
+	HANDLE hSelf = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_OPERATION, FALSE, ::GetCurrentProcessId());
 	MEMORY_BASIC_INFORMATION mbi;
 
 	//Open up vtable of linked object
@@ -487,12 +494,12 @@ void CleanUpHooking()
 	if (HookTableSize<0x80)	for(;i<=HookTableSize;i++) unhookVesselInternal(i);
 	HookTableSize=0xFE;
 	delete HookMethodObject;
-	union Event *entry;
+	union Hook_Event *entry;
 	while (!HookQueue->is_empty())
 	{
 		fprintf(EventLogFile, "Clearing queue entry #%d\n", HookQueue->get_count());
 		fflush(EventLogFile);
-		entry=(union Event *)HookQueue->Dequeue();
+		entry=(union Hook_Event *)HookQueue->Dequeue();
 		delete entry;
 	}
 	delete HookQueue;

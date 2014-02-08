@@ -1,12 +1,20 @@
+//Copyright (c) 2013 Christopher Johnstone(meson800)
+//The MIT License - See ../../../LICENSE for more info
+
 #include "Serial.h"
 
 Serial::Serial(char *portName)
 {
+
+	//adjust portName
+	char adjustedPort [100];
+	sprintf(adjustedPort, "\\\\.\\%s", portName);
+
     //We're not yet connected
     this->connected = false;
 
     //Try to connect to the given port throuh CreateFile
-    this->hSerial = CreateFile(portName,
+    this->hSerial = CreateFile(adjustedPort,
             GENERIC_READ | GENERIC_WRITE,
             0,
             NULL,
@@ -18,7 +26,8 @@ Serial::Serial(char *portName)
     if(this->hSerial==INVALID_HANDLE_VALUE)
     {
         //If not success full display an Error
-        if(GetLastError()==ERROR_FILE_NOT_FOUND){
+		DWORD lastError = GetLastError();
+        if(lastError==ERROR_FILE_NOT_FOUND){
 
             //Print Error if neccessary
             printf("ERROR: Handle was not attached. Reason: %s not available.\n", portName);
