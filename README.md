@@ -43,7 +43,8 @@ Installation
         2. Unzip into an Orbiter installation.  
 
 2. In Orbiter, under the Modules tab, enable "Simpit".  
-3. Edit Config/simpit_config.cfg to set up the module in the desired way.  See [CONFIG](/CONFIG.md) for more information.  
+3. Edit Config/simpit_config.cfg to set up the module in the desired way.  See the [documentation](/Doc/Simpit-Controller/index.md)
+for more information.  
 
 How does it work?
 -----------------
@@ -54,10 +55,11 @@ Submodules either fire events, handle events, or even do both.  When one submodu
 have the chance to handle the event.
 
 
-Developer Information
+Contributing Information
 ---------------------
+Users can submit bug reports and issues to help improve SimpitController
 Developers can add their own sub-modules to add additional input/output modules to extend the capabilities of the modules  
-See [DEVELOP](/DEVELOP.md) for more information
+See [CONTRIBUTING](/Doc/Simpit-Controller/CONTRIBUTING.md) for more information
 
 License
 -------
