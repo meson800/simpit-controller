@@ -1,3 +1,0 @@
-Developer Information
-=====================
-Coming soon!
