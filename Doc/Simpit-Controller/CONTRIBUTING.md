@@ -13,7 +13,7 @@ or report it through GitHub:
 * Fork the repository on GitHub by clicking on the "Clone in Windows" button or 
 run the following command in a git shell.
 ```
-git clone git@github.com:meson800/simpit-controller.git
+git clone https://github.com/meson800/simpit-controller.git
 ```
 * To build the project you will need to have some version of Visual Studio 2012 installed
 * If you are debugging in Release mode, you must change the Debug command to include your path

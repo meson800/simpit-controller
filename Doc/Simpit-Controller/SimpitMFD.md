@@ -47,11 +47,11 @@ Only displays the area in the MFD between the coordinates (70,70) and
 
 **************************************
 
-*event*: Simulates a mouse-click on one of the MFD buttons.  Three
-integers, defining the event ID to trigger on, the event state to
-trigger on, and the button to click on the MFD, respectivly.  An
-additional, optional integer can be edited to make different events
-trigger mouse down/up events.
+*event*: Simulates a mouse-click on one of the MFD buttons when a
+certain event is recieved.  Three integers, defining the event ID
+to trigger on, the event state to trigger on, and the button to
+click on the MFD, respectivly.  An additional, optional integer
+can be edited to make different events trigger mouse down/up events.
 
 The buttons on the MFD are defined in the following way:
 * Buttons 0-5 run down the left side of the MFD, with 0 at the top
@@ -62,9 +62,9 @@ and 11 at the bottom.
 * Button 13 simulates SEL
 * Button 14 simulates MNU
 
-If the forth integer is 1, then that event triggers a mouse down event.  
-If the forth integer is 0, then that event triggers a mouse up event.  
-If there is no forth integer, then a mouse click event is triggered.
+If the fourth integer is 1, then that event triggers a mouse down event.  
+If the fourth integer is 0, then that event triggers a mouse up event.  
+If there is no fourth integer, then a mouse click event is triggered.
 
 Example:
 ```

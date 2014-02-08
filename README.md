@@ -13,7 +13,7 @@ Arduino connected to outside switches/buttons) can be used to trigger mouse clic
 
 What can this be used for?
 --------------------------
-This module is initially set up with a generic configuration, but can be configured to make a simple or complex system.
+This module is initially set up with an empty configuration, but can be configured to make a simple or complex system.
 
 Some uses are:  
 *    Positioning those pesky External MFD's automatically at simualtion start instead of doing it manually. 
@@ -57,7 +57,7 @@ have the chance to handle the event.
 
 Contributing Information
 ---------------------
-Users can submit bug reports and issues to help improve SimpitController
+Users can submit bug reports and issues to help improve SimpitController.  
 Developers can add their own sub-modules to add additional input/output modules to extend the capabilities of the modules  
 See [CONTRIBUTING](/Doc/Simpit-Controller/CONTRIBUTING.md) for more information
 

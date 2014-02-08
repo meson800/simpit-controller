@@ -19,7 +19,7 @@ The first string defines the program that will be called, and the second defines
 the command line arguments that will be sent to the program.  Either can use the
 [macro expander](MacroExpander.md).
 
-Also, relative paths do not work well when defining the executable to run.
+Also, relative paths do not work when defining the executable to run.
 
 Any number of these can be defined.
 

@@ -8,8 +8,8 @@ Options
 
 *****************************
 
-*output*: When a specified event is passed to KeyOutput, a keystroke/
-combination of keystrokes are sent to Orbiter.  Value consists of two
+*output*: When a specified event is passed to KeyOutput, a keystroke/combination
+of keystrokes are sent to Orbiter.  Value consists of two
 integers and a string, with an optional string on the end.  The first
 two integers define the event ID and state to trigger on, the string
 sets which keystrokes should be passed to Orbiter, and the optional
