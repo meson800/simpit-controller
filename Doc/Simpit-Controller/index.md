@@ -39,3 +39,5 @@ Options are in **bold** if required, or are in *italics* if optional.
 [PanelEventRecorderOutput](./PanelEventRecorderOutput.md)  
 [ExternalOutput](./ExternalOutput.md)  
 [SimpitMFD](./SimpitMFD.md)  
+[KeyOutput](./KeyOutput.md)  
+[StateSaver](./StateSaver.md)
