@@ -27,6 +27,8 @@ current focus vessel.
 If there is a vessel class defined, keystrokes are only sent if the
 focus vessel is of the class defined.
 
+Any number of these may be defined.
+
 Example:
 ```
 output = 10 2 ^p
