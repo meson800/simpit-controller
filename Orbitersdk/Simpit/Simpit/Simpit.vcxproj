@@ -54,7 +54,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(SDKDir)\Simpit\HelperDLL;$(SDKDir)\include</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SDKLibDir)</LibraryPath>
-    <OutDir>$(OrbiterDir)\Modules\Plugin\</OutDir>
+    <OutDir>..\..\..\Modules\Plugin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_d|Win32'">
     <LinkIncremental>false</LinkIncremental>
