@@ -16,6 +16,8 @@ run the following command in a git shell.
 git clone git@github.com:meson800/simpit-controller.git
 ```
 * To build the project you will need to have some version of Visual Studio 2012 installed
+* If you are debugging in Release mode, you must change the Debug command to include your path
+to orbiter.exe.  For some reason, Visual Studio does not allow this to be a relative path.
 
 Adding Submodules
 -----------------
