@@ -26,7 +26,7 @@ public:
 	void SimulationEnd();
 	void save(FILEHANDLE outputFile) {}
 	void readSerialThread();
-
+	void handleEvent(Event ev);
 
 
 private:

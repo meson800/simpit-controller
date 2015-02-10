@@ -70,6 +70,21 @@ void SerialInput::load(const char * key, const char * value)
 	}
 }
 
+void SerialInput::handleEvent(Event ev)
+{
+	//check if it's in map
+	if (outputEvents.count(ev))
+	{
+		//send the string down the line to the Arduino
+		std::string sendInfo = outputEvents[ev];
+		MacroExpander::expandString(sendInfo);
+
+		EnterCriticalSection(&critSection);
+		serial->WriteData((char*)sendInfo.c_str(), sendInfo.size());
+		LeaveCriticalSection(&critSection);
+	}
+}
+
 
 void SerialInput::readSerialThread()
 {
