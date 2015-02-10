@@ -19,7 +19,7 @@ DWORD WINAPI SerialThreadFunction( LPVOID lpParam );
 class SerialInput : public Input
 {
 public:
-	SerialInput() : stopSerial(false)  {InitializeCriticalSection(&critSection);}
+	SerialInput() : stopSerial(false)  { InitializeCriticalSection(&critSection); formatString[0] = 0; }
 	~SerialInput();
 	void load (const char * key, const char * value);
 	void SimulationStart();
