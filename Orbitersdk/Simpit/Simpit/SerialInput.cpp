@@ -59,7 +59,7 @@ void SerialInput::load(const char * key, const char * value)
 		strcpy(formatString, value);
 	}
 
-	else
+	else if (strcmp(key, "event") == 0)
 	{
 		Event thisEvent;
 		char text[255];
