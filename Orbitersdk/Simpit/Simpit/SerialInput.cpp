@@ -110,13 +110,15 @@ void SerialInput::readSerialThread()
 			buffer.push_back(readChar);
 
 		//see if we have a complete event
-		while (buffer.size() >= 7 && buffer.substr(buffer.find_first_of('.'),7).size() >= 7 && buffer.find_first_of('.')!=std::string::npos)
+		int switchNum, newState, numChars;
+		numChars = -1;
+		std::string newFormatString = std::string(formatString) + " %n";
+		while (sscanf(buffer.c_str(),newFormatString.c_str(),&switchNum, &newState, &numChars) == 2)
 		{
-			char * cbuffer = new char [7];
-			strcpy(cbuffer,buffer.substr(buffer.find_first_of('.'),7).c_str());
-			int switchNum, newState;
-			sscanf(cbuffer,formatString,&switchNum,&newState);
-			buffer = buffer.substr(buffer.find("/")+1,buffer.length() - 7);
+			//check if numChars is still -1, because now we know if it finished
+			if (numChars == -1)
+				break;
+			buffer = buffer.substr(numChars,std::string::npos);
 
 			if (currentEvents.count(switchNum) == 0)
 			{
