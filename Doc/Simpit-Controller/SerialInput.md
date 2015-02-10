@@ -1,4 +1,4 @@
-SerialInput
+SerialCommunication
 ===========
 Connects to a serial port (possibly a USB serial port) at 9600 baud rate
 and interprets messages as events.  Intercepted events are passed on to the
@@ -6,7 +6,7 @@ main SimpitManager and then onto various submodules.
 
 Options
 --------
-**Name Token**: SERIAL_INPUT
+**Name Token**: SERIAL_COMMUNICATION
 
 ******************************************
 
@@ -47,3 +47,22 @@ The above would interpret
 /10,1\/15,0\
 ```
 as the first two events described above.
+
+*****************************************
+
+**event**: Two integers and a string that define strings to be sent over the serial port.
+
+The first integer is the event ID to trigger on, and the second is the state to trigger on.
+
+The string, which must be included in quotes, is sent over the serial port after being expanded by MacroExpander.
+
+Example:
+```
+event = 1 1 "/<fuel_percent 0>,<fuel_percent 1>/"
+```
+The above would send the first two fuel tank percentages over the serial port when it receives an event with ID=1 and state=1
+
+For example, if the first fuel tank has 98.4% and the second has 65.5% fuel, the following would be sent over the serial port:
+```
+/.984,.655/
+```

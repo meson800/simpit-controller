@@ -18,10 +18,10 @@ void ModuleFactory::createModules(vector<IO *>& moduleVector, HINSTANCE hDLL)
 				Log::println("[ModuleFactory]Creating PanelEventOutput");
 				moduleVector.push_back(new PanelEventOutput());
 			}
-			else if (strcmp(moduleName, "BEGIN SERIAL_INPUT") == 0)
+			else if (strcmp(moduleName, "BEGIN SERIAL_COMMUNICATION") == 0)
 			{
-				Log::println("[ModuleFactory]Creating SerialInput");
-				moduleVector.push_back(new SerialInput());
+				Log::println("[ModuleFactory]Creating SerialCommunication");
+				moduleVector.push_back(new SerialCommunication());
 			}
 			else if (strcmp(moduleName, "BEGIN PANEL_CLICK_RECORDER") == 0)
 			{

@@ -3,7 +3,7 @@
 
 #include "SerialInput.h"
 
-SerialInput::~SerialInput()
+SerialCommunication::~SerialCommunication()
 {
 	DeleteCriticalSection(&critSection);
 	
@@ -12,11 +12,11 @@ SerialInput::~SerialInput()
 
 DWORD WINAPI SerialThreadFunction( LPVOID lpParam ) 
 { 
-	((SerialInput *)(lpParam))->readSerialThread();
+	((SerialCommunication *)(lpParam))->readSerialThread();
 	return 0;
 }
 
-void SerialInput::SimulationStart()
+void SerialCommunication::SimulationStart()
 {
 	//init serial
  	serial = new Serial(comPort);
@@ -26,7 +26,7 @@ void SerialInput::SimulationStart()
 	buffer = "";
 
 	//make the argument for our function to access
-	SerialInput * thisInput = this;
+	SerialCommunication * thisInput = this;
 	//do windows threading
 	HANDLE hThread = CreateThread(
 		NULL,                   // default security attributes
@@ -40,7 +40,7 @@ void SerialInput::SimulationStart()
 	CloseHandle(hThread);
 }
 
-void SerialInput::SimulationEnd()
+void SerialCommunication::SimulationEnd()
 {
 	EnterCriticalSection(&critSection);
 	stopSerial = true;
@@ -48,7 +48,7 @@ void SerialInput::SimulationEnd()
 }
 
 
-void SerialInput::load(const char * key, const char * value)
+void SerialCommunication::load(const char * key, const char * value)
 {
 	if (strcmp(key, "com_port") == 0)
 	{
@@ -58,10 +58,35 @@ void SerialInput::load(const char * key, const char * value)
 	{
 		strcpy(formatString, value);
 	}
+
+	else if (strcmp(key, "event") == 0)
+	{
+		Event thisEvent;
+		char text[255];
+		if (sscanf(value, "%i %i \"%254[^\"]\"", &(thisEvent.id), &(thisEvent.state), text) == 3)
+		{
+			outputEvents[Event(thisEvent)] = std::string(text);
+		}
+	}
+}
+
+void SerialCommunication::handleEvent(Event ev)
+{
+	//check if it's in map
+	if (outputEvents.count(ev))
+	{
+		//send the string down the line to the Arduino
+		std::string sendInfo = outputEvents[ev];
+		MacroExpander::expandString(sendInfo);
+
+		EnterCriticalSection(&critSection);
+		serial->WriteData((char*)sendInfo.c_str(), sendInfo.size());
+		LeaveCriticalSection(&critSection);
+	}
 }
 
 
-void SerialInput::readSerialThread()
+void SerialCommunication::readSerialThread()
 {
 
 	while(true)
@@ -85,13 +110,15 @@ void SerialInput::readSerialThread()
 			buffer.push_back(readChar);
 
 		//see if we have a complete event
-		while (buffer.size() >= 7 && buffer.substr(buffer.find_first_of('.'),7).size() >= 7 && buffer.find_first_of('.')!=std::string::npos)
+		int switchNum, newState, numChars;
+		numChars = -1;
+		std::string newFormatString = std::string(formatString) + " %n";
+		while (sscanf(buffer.c_str(),newFormatString.c_str(),&switchNum, &newState, &numChars) == 2)
 		{
-			char * cbuffer = new char [7];
-			strcpy(cbuffer,buffer.substr(buffer.find_first_of('.'),7).c_str());
-			int switchNum, newState;
-			sscanf(cbuffer,formatString,&switchNum,&newState);
-			buffer = buffer.substr(buffer.find("/")+1,buffer.length() - 7);
+			//check if numChars is still -1, because now we know if it finished
+			if (numChars == -1)
+				break;
+			buffer = buffer.substr(numChars,std::string::npos);
 
 			if (currentEvents.count(switchNum) == 0)
 			{
