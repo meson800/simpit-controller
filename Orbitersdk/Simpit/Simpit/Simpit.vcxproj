@@ -55,15 +55,15 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(SDKDir)\Simpit\HelperDLL;$(SDKDir)\include</IncludePath>
-    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SDKLibDir)</LibraryPath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(SDKDir)\Simpit\HelperDLL;$(SDKDir)\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SDKLibDir);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
     <OutDir>..\..\..\Modules\Plugin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_d|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>C:\Other Stuff\Orbiter\Orbiter Programming\Modules\Plugin\</OutDir>
     <TargetExt>.dll</TargetExt>
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\Simpit\HelperDLL;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\include</IncludePath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\Simpit\HelperDLL;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\include;$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -71,7 +71,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetExt>.dll</TargetExt>
-    <IncludePath>..\..\..\Orbitersdk\Simpit\HelperDLL;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Orbitersdk\Simpit\HelperDLL;C:\Other Stuff\Orbiter\Orbiter Programming\Orbitersdk\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;$(WindowsSDK_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>..\..\..\Orbitersdk\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
