@@ -58,6 +58,16 @@ void SerialInput::load(const char * key, const char * value)
 	{
 		strcpy(formatString, value);
 	}
+
+	else
+	{
+		Event thisEvent;
+		char text[255];
+		if (sscanf(value, "%i %i \"%254[^\"]\"", &(thisEvent.id), &(thisEvent.state), text) == 3)
+		{
+			outputEvents[Event(thisEvent)] = std::string(text);
+		}
+	}
 }
 
 

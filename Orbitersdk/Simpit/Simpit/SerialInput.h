@@ -27,7 +27,10 @@ public:
 	void save(FILEHANDLE outputFile) {}
 	void readSerialThread();
 
+
+
 private:
+	std::map<Event, std::string> outputEvents;
 	std::map<int, int> currentEvents;
 	CRITICAL_SECTION critSection;
 	bool stopSerial;
