@@ -3,7 +3,7 @@
 
 #include "SerialInput.h"
 
-SerialInput::~SerialInput()
+SerialCommunication::~SerialCommunication()
 {
 	DeleteCriticalSection(&critSection);
 	
@@ -12,11 +12,11 @@ SerialInput::~SerialInput()
 
 DWORD WINAPI SerialThreadFunction( LPVOID lpParam ) 
 { 
-	((SerialInput *)(lpParam))->readSerialThread();
+	((SerialCommunication *)(lpParam))->readSerialThread();
 	return 0;
 }
 
-void SerialInput::SimulationStart()
+void SerialCommunication::SimulationStart()
 {
 	//init serial
  	serial = new Serial(comPort);
@@ -26,7 +26,7 @@ void SerialInput::SimulationStart()
 	buffer = "";
 
 	//make the argument for our function to access
-	SerialInput * thisInput = this;
+	SerialCommunication * thisInput = this;
 	//do windows threading
 	HANDLE hThread = CreateThread(
 		NULL,                   // default security attributes
@@ -40,7 +40,7 @@ void SerialInput::SimulationStart()
 	CloseHandle(hThread);
 }
 
-void SerialInput::SimulationEnd()
+void SerialCommunication::SimulationEnd()
 {
 	EnterCriticalSection(&critSection);
 	stopSerial = true;
@@ -48,7 +48,7 @@ void SerialInput::SimulationEnd()
 }
 
 
-void SerialInput::load(const char * key, const char * value)
+void SerialCommunication::load(const char * key, const char * value)
 {
 	if (strcmp(key, "com_port") == 0)
 	{
@@ -70,7 +70,7 @@ void SerialInput::load(const char * key, const char * value)
 	}
 }
 
-void SerialInput::handleEvent(Event ev)
+void SerialCommunication::handleEvent(Event ev)
 {
 	//check if it's in map
 	if (outputEvents.count(ev))
@@ -86,7 +86,7 @@ void SerialInput::handleEvent(Event ev)
 }
 
 
-void SerialInput::readSerialThread()
+void SerialCommunication::readSerialThread()
 {
 
 	while(true)
